@@ -12,4 +12,4 @@ CREATE DATABASE inventory
     CONNECTION LIMIT = -1;
 
 COMMENT ON DATABASE inventory
-    IS 'This is is the Database for the inventory project called,  Vento';
+    IS 'This is the Database for the inventory project called,  Vento';
