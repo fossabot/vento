@@ -12,7 +12,8 @@ CREATE TABLE public.product
 )
 WITH (
     OIDS = FALSE
-);
+)
+TABLESPACE pg_default;
 
 ALTER TABLE public.product
     OWNER to postgres;
