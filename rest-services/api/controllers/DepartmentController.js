@@ -21,7 +21,7 @@ module.exports = {
 
     get: async function(req, res) {
         let departments = await Departments.find();
-        return res.json({ departments: departments });
+        return res.json({ departments: [departments] });
     }
 
 };
