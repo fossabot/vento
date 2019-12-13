@@ -1,0 +1,4 @@
+# Delete a department
+
+URL: http://localhost:1337/api/departments/991bf2b0-1d7b-11ea-99c5-f3385c4e8d29
+Method: Delete
