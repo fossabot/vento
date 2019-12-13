@@ -24,8 +24,9 @@ module.exports.routes = {
         Department related routes
     */
    'get /api/departments': 'DepartmentController.get',
+   'get /api/departments/:id': 'DepartmentController.getById',
    'post /api/departments': 'DepartmentController.create',
-   'put /api/departments': 'DepartmentController.update',
+   'put /api/departments/:id': 'DepartmentController.update',
    'delete /api/departments': 'DepartmentController.delete',
 
    /*
@@ -35,6 +36,22 @@ module.exports.routes = {
    'post /api/products': 'ProductController.create',
    'put /api/products': 'ProductController.update',
    'delete /api/products': 'ProductController.delete',
+
+   /*
+        Roles related routes
+    */
+   'get /api/roles': 'RoleController.get',
+   'post /api/roles': 'RoleController.create',
+   'put /api/roles': 'RoleController.update',
+   'delete /api/roles': 'RoleController.delete',
+
+   /*
+        Permission related routes
+    */
+   'get /api/permissions': 'PermissionController.get',
+   'post /api/permissions': 'PermissionController.create',
+   'put /api/permissions': 'PermissionController.update',
+   'delete /api/permissions': 'PermissionController.delete',
     
     /*
         Users related routes
@@ -48,8 +65,8 @@ module.exports.routes = {
         Assets Related Routes
     */
     'get /api/assets': '/api/assets/hardware',
-    'get /api/assets/hardware': 'AssetHardwareController.get',
-    'post /api/assets/hardware': 'AssetHardwareController.create',
-    'put /api/assets/hardware': 'AssetHardwareController.update',
-    'delete /api/assets/hardware': 'AssetHardwareController.delete'
+    'get /api/assets/hardware': 'HardwareAssetsController.get',
+    'post /api/assets/hardware': 'HardwareAssetsController.create',
+    'put /api/assets/hardware': 'HardwareAssetsController.update',
+    'delete /api/assets/hardware': 'HardwareAssetsController.delete'
 };
