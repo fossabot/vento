@@ -27,7 +27,8 @@ module.exports.routes = {
    'get /api/departments/:id': 'DepartmentController.getById',
    'post /api/departments': 'DepartmentController.create',
    'put /api/departments/:id': 'DepartmentController.update',
-   'delete /api/departments': 'DepartmentController.delete',
+   'delete /api/departments/:id': 'DepartmentController.delete',
+   'post /api/departments/multiDelete': 'DepartmentController.deleteMulti',
 
    /*
         Product related routes

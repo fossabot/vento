@@ -8,26 +8,28 @@ const uuidv1 = require('uuid/v1');
 
 module.exports = {
     create: async function (req, res) {
-        let payload = {};
-        payload['id'] = uuidv1();
-        payload['name'] = req.body.name;
-        payload['location'] = req.body.location;
+        let depts = req.param('departments');
+        let payload = [];
+        depts.map(elem => {
+            elem['id'] = uuidv1();
+            payload.push(elem);
+        });
 
-        let createdUser = await Departments.create(payload).fetch();
-        sails.log(`Created the department successfully: ${JSON.stringify(createdUser)}`);
-        return res.json({ department: createdUser });
+        let createdDepartments = await Department.createEach(payload).fetch();
+        sails.log(`Created the department(s) successfully: ${JSON.stringify(createdDepartments)}`);
+        return res.json({ department: createdDepartments });
     },
 
     get: async function (req, res) {
-        let departments = await Departments.find();
+        let query = req.query;
+        let departments = await Department.find(query);
         sails.log(`Fetched all the departments successfully: ${JSON.stringify(departments)}`);
-        return res.json({ departments: [departments] });
+        return res.json({ departments: departments });
     },
 
     getById: async function (req, res) {
         let id = req.param('id');
-        sails.log.debug(id);
-        let department = await Departments.findOne({ id: id });
+        let department = await Department.findOne({ id: id });
         sails.log(`Fetched the department details by ${id}: ${JSON.stringify(department)}`);
         return res.json({ department: department });
     },
@@ -37,7 +39,7 @@ module.exports = {
         let payload = {};
         payload['name'] = req.body.name;
         payload['location'] = req.body.location;
-        let updatedDepartment = await Departments.updateOne({ id: id })
+        let updatedDepartment = await Department.updateOne({ id: id })
             .set(payload);
 
         if (updatedDepartment) {
@@ -48,6 +50,33 @@ module.exports = {
         }
 
         return res.json({ department: updatedDepartment });
+    },
+
+    delete: async function (req, res) {
+        let id = req.param('id');
+        let deletedDept = await Department.destroyOne({id: id})
+        if (deletedDept) {
+            sails.log(`Deleted department with id: ${id}.`);
+        } else {
+            sails.log(`The database does not have a department with id: ${id}`);
+        }
+
+        return res.json({ department: deletedDept });
+    },
+
+    deleteMulti: async function (req, res) {
+        let ids = req.param('ids');
+        let deletedRecords = await Department.destroy({
+            id: { in: ids }
+        }).fetch();
+        
+        if (deletedRecords) {
+            sails.log(`All the department recorts deleted successfully.`);
+        } else {
+            sails.log(`Problem in deleting all the department records`);
+        }
+        
+        return res.json({ count: deletedRecords.length });
     }
 
 };

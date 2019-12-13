@@ -1,8 +1,8 @@
--- Table: public.departments
+-- Table: public.department
 
--- DROP TABLE public.departments;
+-- DROP TABLE public.department;
 
-CREATE TABLE public.departments
+CREATE TABLE public.department
 (
     id character varying COLLATE pg_catalog."default" NOT NULL,
     name character varying(50) COLLATE pg_catalog."default" NOT NULL,
@@ -16,7 +16,7 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.departments
+ALTER TABLE public.department
     OWNER to vento;
-COMMENT ON TABLE public.departments
+COMMENT ON TABLE public.department
     IS 'This is the table to host all the department information.';
