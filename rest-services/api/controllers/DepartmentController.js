@@ -4,20 +4,16 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-const uuidv1 = require('uuid/v1');
+const APIUtil = require('../utils/APIUtil');
 
 module.exports = {
     create: async function (req, res) {
         let depts = req.param('departments');
-        let payload = [];
-        depts.map(elem => {
-            elem['id'] = uuidv1();
-            payload.push(elem);
-        });
+        let payload = APIUtil.getCreatePayload(depts);
 
         let createdDepartments = await Department.createEach(payload).fetch();
         sails.log(`Created the department(s) successfully: ${JSON.stringify(createdDepartments)}`);
-        return res.json({ department: createdDepartments });
+        return res.json({ departments: createdDepartments });
     },
 
     get: async function (req, res) {

@@ -34,9 +34,11 @@ module.exports.routes = {
         Product related routes
     */
    'get /api/products': 'ProductController.get',
+   'get /api/products/:id': 'ProductController.getById',
    'post /api/products': 'ProductController.create',
-   'put /api/products': 'ProductController.update',
-   'delete /api/products': 'ProductController.delete',
+   'put /api/products/:id': 'ProductController.update',
+   'delete /api/products/:id': 'ProductController.delete',
+   'post /api/products/multiDelete': 'ProductController.deleteMulti',
 
    /*
         Roles related routes
