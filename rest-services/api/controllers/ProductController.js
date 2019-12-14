@@ -1,5 +1,5 @@
 /**
- * DepartmentController
+ * ProductController
  *
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
@@ -35,7 +35,7 @@ module.exports = {
         payload['name'] = req.body.name;
         payload['display_name'] = req.body['display_name'];
         payload['department_id'] = req.body['department_id'];
-        let updatedProduct = await Department.updateOne({ id: id })
+        let updatedProduct = await Product.updateOne({ id: id })
             .set(payload);
 
         if (updatedProduct) {

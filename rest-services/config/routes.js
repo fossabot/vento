@@ -44,9 +44,11 @@ module.exports.routes = {
         Roles related routes
     */
    'get /api/roles': 'RoleController.get',
+   'get /api/roles/:id': 'RoleController.getById',
    'post /api/roles': 'RoleController.create',
-   'put /api/roles': 'RoleController.update',
-   'delete /api/roles': 'RoleController.delete',
+   'put /api/roles/:id': 'RoleController.update',
+   'delete /api/roles/:id': 'RoleController.delete',
+   'post /api/roles/multiDelete': 'RoleController.deleteMulti',
 
    /*
         Permission related routes
