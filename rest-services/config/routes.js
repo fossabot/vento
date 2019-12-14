@@ -54,9 +54,11 @@ module.exports.routes = {
         Permission related routes
     */
    'get /api/permissions': 'PermissionController.get',
+   'get /api/permissions/:id': 'PermissionController.getById',
    'post /api/permissions': 'PermissionController.create',
-   'put /api/permissions': 'PermissionController.update',
-   'delete /api/permissions': 'PermissionController.delete',
+   'put /api/permissions/:id': 'PermissionController.update',
+   'delete /api/permissions/:id': 'PermissionController.delete',
+   'post /api/permissions/multiDelete': 'PermissionController.deleteMulti',
     
     /*
         Users related routes
