@@ -1,0 +1,7 @@
+# Get all the departments and filtered values
+
+URL: http://localhost:1337/api/departments
+Method: GET
+
+URL: http://localhost:1337/api/departments?name=ZEN&location=Bangalore
+Method: GET

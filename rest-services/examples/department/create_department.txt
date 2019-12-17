@@ -1,0 +1,18 @@
+# Create Department
+
+URL: http://localhost:1337/api/departments
+Method: POST
+Body: {
+  "departments": [
+    {
+      
+      "name": "ZEN",
+      "location": "Bangalore"
+    },
+    {
+      
+      "name": "BEN",
+      "location": "USA"
+    }
+  ]
+}

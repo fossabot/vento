@@ -1,0 +1,4 @@
+# Get Department By id
+
+URL: http://localhost:1337/api/departments/215512d0-1d89-11ea-80ef-6369a5145950
+Method: GET

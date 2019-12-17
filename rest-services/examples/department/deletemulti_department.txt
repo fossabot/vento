@@ -1,0 +1,7 @@
+# Delete more or all Departments
+
+URL: http://localhost:1337/api/departments/multiDelete
+Method: POST
+body: {
+	"ids": ["215512d0-1d89-11ea-80ef-6369a5145950", "215512d1-1d89-11ea-80ef-6369a5145950"]
+}
