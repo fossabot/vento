@@ -74,9 +74,11 @@ module.exports.routes = {
         Users related routes
     */
     'get /api/users': 'UserController.get',
+    'get /api/users/:id': 'UserController.getById',
     'post /api/users': 'UserController.create',
-    'put /api/users': 'UserController.update',
-    'delete /api/users': 'UserController.delete',
+    'put /api/users/:id': 'UserController.update',
+    'delete /api/users/:id': 'UserController.delete',
+    'post /api/users/multiDelete': 'UserController.deleteMulti',
 
     /*
         Assets Related Routes
