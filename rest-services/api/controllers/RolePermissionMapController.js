@@ -33,9 +33,7 @@ module.exports = {
 
     update: async function (req, res) {
         let id = req.param('id');
-        let payload = {};
-        payload['role_id'] = req.body['role_id'];
-        payload['permission_id'] = req.body['permission_id'];
+        let payload = req.param('rolePermissionMap');
         let updatedRolePermissionMap = await RolePermissionMap.updateOne({ id: id })
             .set(payload);
 

@@ -31,10 +31,7 @@ module.exports = {
 
     update: async function (req, res) {
         let id = req.param('id');
-        let payload = {};
-        payload['name'] = req.body.name;
-        payload['display_name'] = req.body['display_name'];
-        payload['department_id'] = req.body['department_id'];
+        let payload = req.param('product');
         let updatedProduct = await Product.updateOne({ id: id })
             .set(payload);
 
