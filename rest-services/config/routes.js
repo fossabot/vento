@@ -12,8 +12,8 @@ module.exports.routes = {
     /*
         Login Logout related routes
     */
-    'POST /api/login': 'AuthController.login',
-    '/api/logout': 'AuthController.logout',
+    'post /api/login': 'AuthController.login',
+    'post /api/logout': 'AuthController.logout',
     
     /*
         Default Route
