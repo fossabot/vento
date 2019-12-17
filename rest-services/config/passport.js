@@ -28,9 +28,9 @@ passport.use(new LocalStrategy({
                 }
                 if(!res) return cb(null, false, { message: 'Invalid Password' });
                 let userDetails = {
+                    id: user.id,
                     email: user.email,
-                    username: user.username,
-                    id: user.id
+                    username: user.username
                 };
                 return cb(null, userDetails, { message: 'Login Succesful'});
             });
