@@ -32,9 +32,7 @@ module.exports = {
 
     update: async function (req, res) {
         let id = req.param('id');
-        let payload = {};
-        payload['name'] = req.body.name;
-        payload['location'] = req.body.location;
+        let payload = req.param('department');
         let updatedDepartment = await Department.updateOne({ id: id })
             .set(payload);
 

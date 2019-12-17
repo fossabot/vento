@@ -16,3 +16,8 @@ module.exports.getCreatePayload = (data) => {
 
     return payload;
 }
+
+module.exports.addUUID = (obj) => {
+    obj['id'] = uuidv1();
+    return obj;
+}

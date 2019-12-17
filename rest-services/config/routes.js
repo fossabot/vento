@@ -12,8 +12,8 @@ module.exports.routes = {
     /*
         Login Logout related routes
     */
-    'POST /api/login': 'AuthController.login',
-    '/api/logout': 'AuthController.logout',
+    'post /api/login': 'AuthController.login',
+    'post /api/logout': 'AuthController.logout',
     
     /*
         Default Route
@@ -60,13 +60,25 @@ module.exports.routes = {
    'delete /api/permissions/:id': 'PermissionController.delete',
    'post /api/permissions/multiDelete': 'PermissionController.deleteMulti',
     
+   /*
+        Role-Permission related routes
+    */
+    'get /api/role-permission-map': 'RolePermissionMapController.get',
+    'get /api/role-permission-map/:id': 'RolePermissionMapController.getById',
+    'post /api/role-permission-map': 'RolePermissionMapController.create',
+    'put /api/role-permission-map/:id': 'RolePermissionMapController.update',
+    'delete /api/role-permission-map/:id': 'RolePermissionMapController.delete',
+    'post /api/role-permission-map/multiDelete': 'RolePermissionMapController.deleteMulti',
+
     /*
         Users related routes
     */
     'get /api/users': 'UserController.get',
+    'get /api/users/:id': 'UserController.getById',
     'post /api/users': 'UserController.create',
-    'put /api/users': 'UserController.update',
-    'delete /api/users': 'UserController.delete',
+    'put /api/users/:id': 'UserController.update',
+    'delete /api/users/:id': 'UserController.delete',
+    'post /api/users/multiDelete': 'UserController.deleteMulti',
 
     /*
         Assets Related Routes

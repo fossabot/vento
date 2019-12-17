@@ -20,7 +20,7 @@ module.exports = {
             req.logIn(user, function(err) {
                 if(err) res.send(err);
                 const token = jwt.sign(user, 'secretkey');
-                return res.json({token});
+                return res.json({'token': token, 'user': user});
             });
         })(req, res);
     },
