@@ -1,27 +1,24 @@
--- Table: public."role-permission-map"
+-- Table: public.rolepermissionmap
 
--- DROP TABLE public."role-permission-map";
+-- DROP TABLE public.rolepermissionmap;
 
-CREATE TABLE public."role-permission-map"
+CREATE TABLE public.rolepermissionmap
 (
-    role_id character varying COLLATE pg_catalog."default" NOT NULL,
-    permission_id character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT pk_id PRIMARY KEY (role_id, permission_id),
-    CONSTRAINT fk_perm_id FOREIGN KEY (permission_id)
-        REFERENCES public.permission (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
-    CONSTRAINT fk_role_id FOREIGN KEY (role_id)
-        REFERENCES public.role (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+    "createdAt" bigint,
+    "updatedAt" bigint,
+    id character varying COLLATE pg_catalog."default" NOT NULL,
+    role_id text COLLATE pg_catalog."default",
+    permission_id text COLLATE pg_catalog."default",
+    CONSTRAINT rolepermissionmap_pkey PRIMARY KEY (id),
+    CONSTRAINT rolepermissionmap_permission_id_key UNIQUE (permission_id)
+,
+    CONSTRAINT rolepermissionmap_role_id_key UNIQUE (role_id)
+
 )
 WITH (
     OIDS = FALSE
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public."role-permission-map"
-    OWNER to postgres;
-COMMENT ON TABLE public."role-permission-map"
-    IS 'This is the table for keeping map between role and permission. One role can have multiple permissions and the each of the permissions can be present for one or more Roles.';
+ALTER TABLE public.rolepermissionmap
+    OWNER to vento;

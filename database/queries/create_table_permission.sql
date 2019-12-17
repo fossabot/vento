@@ -4,11 +4,17 @@
 
 CREATE TABLE public.permission
 (
+    "createdAt" bigint,
+    "updatedAt" bigint,
     id character varying COLLATE pg_catalog."default" NOT NULL,
-    name character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    display_name character varying(75) COLLATE pg_catalog."default" NOT NULL,
-    description character varying(1024) COLLATE pg_catalog."default",
-    CONSTRAINT permission_pkey PRIMARY KEY (id)
+    name text COLLATE pg_catalog."default",
+    display_name text COLLATE pg_catalog."default",
+    description text COLLATE pg_catalog."default",
+    CONSTRAINT permission_pkey PRIMARY KEY (id),
+    CONSTRAINT permission_display_name_key UNIQUE (display_name)
+,
+    CONSTRAINT permission_name_key UNIQUE (name)
+
 )
 WITH (
     OIDS = FALSE
@@ -16,6 +22,4 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE public.permission
-    OWNER to postgres;
-COMMENT ON TABLE public.permission
-    IS 'Table to hold all the permissions. A Role can have one or more Permissions.';
+    OWNER to vento;

@@ -1,41 +1,46 @@
--- Table: public.asset_hw
+-- Table: public.hardwareasset
 
--- DROP TABLE public.asset_hw;
+-- DROP TABLE public.hardwareasset;
 
-CREATE TABLE public.asset_hw
+CREATE TABLE public.hardwareasset
 (
+    "createdAt" bigint NOT NULL,
+    "updatedAt" bigint NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
-    asset_id character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    location character varying(10) COLLATE pg_catalog."default",
+    asset_id character varying COLLATE pg_catalog."default" NOT NULL,
+    location character varying COLLATE pg_catalog."default" NOT NULL,
     type character varying COLLATE pg_catalog."default" NOT NULL,
     ip character varying COLLATE pg_catalog."default" NOT NULL,
-    service_tag character varying COLLATE pg_catalog."default" NOT NULL,
-    resource_detail character varying COLLATE pg_catalog."default",
-    contract_end_date numeric NOT NULL,
+    server_tag character varying COLLATE pg_catalog."default" NOT NULL,
+    resource_details character varying COLLATE pg_catalog."default" NOT NULL,
+    contract_end_date bigint NOT NULL,
     owner character varying COLLATE pg_catalog."default" NOT NULL,
     consumer character varying COLLATE pg_catalog."default",
+    state boolean NOT NULL,
+    os_version character varying COLLATE pg_catalog."default" NOT NULL,
+    os_patch character varying COLLATE pg_catalog."default",
+    notes character varying COLLATE pg_catalog."default",
     product_id character varying COLLATE pg_catalog."default" NOT NULL,
-    dept_id character varying COLLATE pg_catalog."default" NOT NULL,
-    notes character varying(2048) COLLATE pg_catalog."default",
-    notification_id character varying COLLATE pg_catalog."default",
-    CONSTRAINT pk_asset_hw_id PRIMARY KEY (id),
-    CONSTRAINT fk_consumer FOREIGN KEY (consumer)
+    department_id character varying COLLATE pg_catalog."default" NOT NULL,
+    notification_id character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT hardwareasset_pkey PRIMARY KEY (id),
+    CONSTRAINT fk_hw_asset_consumer FOREIGN KEY (consumer)
         REFERENCES public."user" (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_dept_id FOREIGN KEY (dept_id)
+    CONSTRAINT fk_hw_asset_depart_id FOREIGN KEY (department_id)
         REFERENCES public.department (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_notification_id FOREIGN KEY (notification_id)
+    CONSTRAINT fk_hw_asset_not_id FOREIGN KEY (notification_id)
         REFERENCES public.notification (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_owner FOREIGN KEY (owner)
+    CONSTRAINT fk_hw_asset_owner FOREIGN KEY (owner)
         REFERENCES public."user" (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_product_id FOREIGN KEY (product_id)
+    CONSTRAINT fk_hw_asset_product_id FOREIGN KEY (product_id)
         REFERENCES public.product (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
@@ -45,7 +50,5 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.asset_hw
-    OWNER to postgres;
-COMMENT ON TABLE public.asset_hw
-    IS 'This table is used for Hardware Assets';
+ALTER TABLE public.hardwareasset
+    OWNER to vento;

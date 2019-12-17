@@ -4,10 +4,12 @@
 
 CREATE TABLE public.notification
 (
+    "createdAt" bigint,
+    "updatedAt" bigint,
     id character varying COLLATE pg_catalog."default" NOT NULL,
-    type character varying COLLATE pg_catalog."default" NOT NULL,
-    notes character varying(20148) COLLATE pg_catalog."default",
-    definition character varying COLLATE pg_catalog."default" NOT NULL,
+    type text COLLATE pg_catalog."default",
+    notes text COLLATE pg_catalog."default",
+    definition text COLLATE pg_catalog."default",
     CONSTRAINT notification_pkey PRIMARY KEY (id)
 )
 WITH (
@@ -16,6 +18,4 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE public.notification
-    OWNER to postgres;
-COMMENT ON TABLE public.notification
-    IS 'Table holds all the notifications.';
+    OWNER to vento;
