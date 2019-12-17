@@ -81,6 +81,15 @@ module.exports.routes = {
     'post /api/users/multiDelete': 'UserController.deleteMulti',
 
     /*
+        Notifications related routes
+    */
+   'get /api/notifications': 'NotificationController.get',
+   'get /api/notifications/:id': 'NotificationController.getById',
+   'post /api/notifications': 'NotificationController.create',
+   'put /api/notifications/:id': 'NotificationController.update',
+   'delete /api/notifications/:id': 'NotificationController.delete',
+
+    /*
         Assets Related Routes
     */
     'get /api/assets': '/api/assets/hardware',
