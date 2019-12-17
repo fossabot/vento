@@ -60,6 +60,16 @@ module.exports.routes = {
    'delete /api/permissions/:id': 'PermissionController.delete',
    'post /api/permissions/multiDelete': 'PermissionController.deleteMulti',
     
+   /*
+        Role-Permission related routes
+    */
+    'get /api/role-permission-map': 'RolePermissionMapController.get',
+    'get /api/role-permission-map/:id': 'RolePermissionMapController.getById',
+    'post /api/role-permission-map': 'RolePermissionMapController.create',
+    'put /api/role-permission-map/:id': 'RolePermissionMapController.update',
+    'delete /api/role-permission-map/:id': 'RolePermissionMapController.delete',
+    'post /api/role-permission-map/multiDelete': 'RolePermissionMapController.deleteMulti',
+
     /*
         Users related routes
     */
