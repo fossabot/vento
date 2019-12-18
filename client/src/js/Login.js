@@ -11,14 +11,14 @@ const Login = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-                <label htmlFor="username">User name</label>
-                <input name="username" ref={register({ required: true })} />
-                <span className="error">{errors.username && 'User name is required.'}</span>
+                <label htmlFor="userName">Username</label>
+                <input name="userName" ref={register({ required: true })} />
+                <span className="error">{errors.userName && 'User name is required.'}</span>
             </div>
 
             <div>
-                <label htmlFor="password">Last Name</label>
-                <input name="password" ref={register({ required: true })} />
+                <label htmlFor="password">Password</label>
+                <input name="password" type="password" ref={register({ required: true })} />
                 <span className="error">{errors.password && 'Password is required.'}</span>
             </div>
 
