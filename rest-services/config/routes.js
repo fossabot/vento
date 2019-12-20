@@ -101,6 +101,16 @@ module.exports.routes = {
     'post /api/assets/hardware/multiDelete': 'HardwareAssetController.deleteMulti',
 
     /*
+        Software Assets Related Routes
+    */
+   'get /api/assets/software': 'SoftwareAssetController.get',
+   'get /api/assets/software/:id': 'SoftwareAssetController.getById',
+   'post /api/assets/software': 'SoftwareAssetController.create',
+   'put /api/assets/software/:id': 'SoftwareAssetController.update',
+   'delete /api/assets/software/:id': 'SoftwareAssetController.delete',
+   'post /api/assets/software/multiDelete': 'SoftwareAssetController.deleteMulti',
+   
+    /*
         Audit Related Routes
     */
    'get /api/audit': 'AuditController.get',
