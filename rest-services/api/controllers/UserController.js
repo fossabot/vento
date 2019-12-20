@@ -22,7 +22,7 @@ module.exports = {
         let query = req.query;
         let user = await User.find(query);
         sails.log(`Fetched all the user successfully: ${JSON.stringify(user)}`);
-        return res.json({ user: user });
+        return res.json({ users: user });
     },
 
     getById: async function (req, res) {

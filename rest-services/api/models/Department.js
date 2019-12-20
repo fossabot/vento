@@ -20,7 +20,7 @@ attributes: {
   location: {
     type: 'string',
     required: true,
-    unique: true
+    unique: false
   }
 }
 };

@@ -1,11 +1,23 @@
+-- Table: public.product
+
+-- DROP TABLE public.product;
+
 CREATE TABLE public.product
 (
-    id character varying NOT NULL,
-    name character varying(50) NOT NULL,
-    display_name character varying(75) NOT NULL,
-    department_id character varying NOT NULL,
-    PRIMARY KEY (id),
-    CONSTRAINT fk_id FOREIGN KEY (department_id)
+    "createdAt" bigint,
+    "updatedAt" bigint,
+    id character varying COLLATE pg_catalog."default" NOT NULL,
+    name text COLLATE pg_catalog."default",
+    display_name text COLLATE pg_catalog."default",
+    department_id text COLLATE pg_catalog."default",
+    CONSTRAINT product_pkey PRIMARY KEY (id),
+    CONSTRAINT product_department_id_key UNIQUE (department_id)
+,
+    CONSTRAINT product_display_name_key UNIQUE (display_name)
+,
+    CONSTRAINT product_name_key UNIQUE (name)
+,
+    CONSTRAINT fk_product_dept_id FOREIGN KEY (department_id)
         REFERENCES public.department (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
@@ -16,6 +28,4 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE public.product
-    OWNER to postgres;
-COMMENT ON TABLE public.product
-    IS 'Table for keeping all the product information for a Department. A Department can have one or more products.';
+    OWNER to vento;

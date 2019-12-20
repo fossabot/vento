@@ -81,11 +81,38 @@ module.exports.routes = {
     'post /api/users/multiDelete': 'UserController.deleteMulti',
 
     /*
-        Assets Related Routes
+        Notifications related routes
+    */
+   'get /api/notifications': 'NotificationController.get',
+   'get /api/notifications/:id': 'NotificationController.getById',
+   'post /api/notifications': 'NotificationController.create',
+   'put /api/notifications/:id': 'NotificationController.update',
+   'delete /api/notifications/:id': 'NotificationController.delete',
+
+    /*
+        Hardware Assets Related Routes
     */
     'get /api/assets': '/api/assets/hardware',
-    'get /api/assets/hardware': 'HardwareAssetsController.get',
-    'post /api/assets/hardware': 'HardwareAssetsController.create',
-    'put /api/assets/hardware': 'HardwareAssetsController.update',
-    'delete /api/assets/hardware': 'HardwareAssetsController.delete'
+    'get /api/assets/hardware': 'HardwareAssetController.get',
+    'get /api/assets/hardware/:id': 'HardwareAssetController.getById',
+    'post /api/assets/hardware': 'HardwareAssetController.create',
+    'put /api/assets/hardware/:id': 'HardwareAssetController.update',
+    'delete /api/assets/hardware/:id': 'HardwareAssetController.delete',
+    'post /api/assets/hardware/multiDelete': 'HardwareAssetController.deleteMulti',
+
+    /*
+        Software Assets Related Routes
+    */
+   'get /api/assets/software': 'SoftwareAssetController.get',
+   'get /api/assets/software/:id': 'SoftwareAssetController.getById',
+   'post /api/assets/software': 'SoftwareAssetController.create',
+   'put /api/assets/software/:id': 'SoftwareAssetController.update',
+   'delete /api/assets/software/:id': 'SoftwareAssetController.delete',
+   'post /api/assets/software/multiDelete': 'SoftwareAssetController.deleteMulti',
+   
+    /*
+        Audit Related Routes
+    */
+   'get /api/audit': 'AuditController.get',
+   'post /api/audit': 'AuditController.create',
 };

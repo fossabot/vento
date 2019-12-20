@@ -1,9 +1,13 @@
 import React from "react";
 
+import Login from './Login';
 
 const App = () => {
   return (
-    <h1>APP is Running!</h1>
+    <React.Fragment>
+      <h1>Login to Vento</h1>
+      <Login />
+    </React.Fragment>
   );
 };
 export default App;
