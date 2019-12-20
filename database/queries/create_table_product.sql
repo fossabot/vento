@@ -16,7 +16,11 @@ CREATE TABLE public.product
     CONSTRAINT product_display_name_key UNIQUE (display_name)
 ,
     CONSTRAINT product_name_key UNIQUE (name)
-
+,
+    CONSTRAINT fk_product_dept_id FOREIGN KEY (department_id)
+        REFERENCES public.department (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
 )
 WITH (
     OIDS = FALSE
