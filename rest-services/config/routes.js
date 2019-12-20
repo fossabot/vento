@@ -99,4 +99,10 @@ module.exports.routes = {
     'put /api/assets/hardware/:id': 'HardwareAssetController.update',
     'delete /api/assets/hardware/:id': 'HardwareAssetController.delete',
     'post /api/assets/hardware/multiDelete': 'HardwareAssetController.deleteMulti',
+
+    /*
+        Audit Related Routes
+    */
+   'get /api/audit': 'AuditController.get',
+   'post /api/audit': 'AuditController.create',
 };
