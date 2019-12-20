@@ -2,4 +2,4 @@
 
 ## ER-Diagram
 
-![AQI](erd/db_erd_diag.png)
+![ERD](erd/db_erd_diag.png)
