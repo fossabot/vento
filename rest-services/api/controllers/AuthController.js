@@ -12,8 +12,11 @@ module.exports = {
     login: function(req, res) {
         passport.authenticate('local', function(err, user, info){
             if((err) || (!user)) {
+                let message = info.message 
+                    ? info.message 
+                    : 'Login Failed! Check username or password.';
                 return res.send({
-                    message: 'Login Failed! Check username or password.',
+                    message: message,
                     code: 401
                 });
             }
