@@ -2,7 +2,7 @@ import React from "react";
 import useForm from 'react-hook-form';
 import { login } from './utils/auth';
 
-const Login = () => {
+const Login = (props) => {
     const { register, handleSubmit, errors } = useForm(); // initialise the hook
     const onSubmit = data => {
         console.log(data);
@@ -15,8 +15,10 @@ const Login = () => {
             payload['username'] = data.userName;
             payload['password'] = data.password;
             await login(payload);
+            props.history.push('/home');
         } catch(e) {
             console.log(e.code, e.message);
+            // TODO: Handling Error Message
         }
     }
 
