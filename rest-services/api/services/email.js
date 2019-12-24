@@ -1,5 +1,5 @@
 let nodemailer = require('nodemailer');
-let joker = require('./joker');
+// let joker = require('./joker');
 
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -25,16 +25,16 @@ module.exports.sendEmail = async function() {
     })
     console.log('Subscribed Emails to send @ ' + new Date(), subsEmails);
 
-    const randomeJoke = await joker.getRandomOne();
-    const jokeContent = randomeJoke[0].content;
-    console.log('Random Joke to send', randomeJoke, jokeContent);
+    // const randomeJoke = await joker.getRandomOne();
+    // const jokeContent = randomeJoke[0].content;
+    // console.log('Random Joke to send', randomeJoke, jokeContent);
 
 
     let mailOptions = {
         from: 'emailbotgreenrooots@gmail.com',
         to: subsEmails.join(),
         subject: 'Jokking: Joke of the Day!',
-        text: jokeContent
+        text: 'Some Text'
     };
     
 
