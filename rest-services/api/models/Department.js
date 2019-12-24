@@ -21,6 +21,11 @@ attributes: {
     type: 'string',
     required: true,
     unique: false
+  },
+  display_name: {
+    type: 'string',
+    required: true,
+    unique: false
   }
 }
 };
