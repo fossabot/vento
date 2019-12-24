@@ -1,12 +1,24 @@
 import React from "react";
-
 import useForm from 'react-hook-form';
+import { login } from './utils/auth';
 
 const Login = () => {
     const { register, handleSubmit, errors } = useForm(); // initialise the hook
     const onSubmit = data => {
         console.log(data);
+        performLogin(data);
     };
+
+    async function performLogin(data) {
+        try{
+            const payload = {};
+            payload['username'] = data.userName;
+            payload['password'] = data.password;
+            await login(payload);
+        } catch(e) {
+            console.log(e.code, e.message);
+        }
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
