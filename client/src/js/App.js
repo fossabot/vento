@@ -17,7 +17,7 @@ const App = () => {
             <PublicRoute restricted={ false } component={ Login } path="/login" exact />
             <PrivateRoute component={ Home } path="/" exact />
             <PrivateRoute component={ Home } path="/home" exact />
-            </Switch>
+          </Switch>
       </BrowserRouter>
     </React.Fragment>
   );
