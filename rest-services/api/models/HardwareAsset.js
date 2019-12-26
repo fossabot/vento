@@ -45,7 +45,7 @@ module.exports = {
       unique: false
     },
     contract_end_date: {
-      type: 'string',
+      type: 'number',
       required: true,
       unique: false
     },
