@@ -1,5 +1,6 @@
 import React from "react";
 import useForm from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { login } from './utils/auth';
 
 const Login = (props) => {
@@ -18,7 +19,7 @@ const Login = (props) => {
             props.history.push('/home');
         } catch(e) {
             console.log(e.code, e.message);
-            // TODO: Handling Error Message
+            toast(e.message, { type: toast.TYPE.ERROR, autoClose: 5000, position: toast.POSITION.TOP_CENTER });
         }
     }
 
