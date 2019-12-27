@@ -28,6 +28,11 @@ module.exports = {
       type: 'string',
       required: false
     },
+    consumer: {
+      type: 'string',
+      required: true,
+      unique: false
+    },
     owner: {
       type: 'string',
       required: true
