@@ -1,25 +1,25 @@
-While ( ($Null -eq $DB_SERVER) -or ($DB_SERVER -eq '') ) {
-  $DB_SERVER = Read-Host -Prompt "Specify Postgres running host"
-}
+$defaultHost = 'localhost'
+$DB_SERVER = Read-Host "Specify Postgres running host [$($defaultHost)]"
+$DB_SERVER = ($defaultHost,$DB_SERVER)[[bool]$DB_SERVER]
 
-While ( ($Null -eq $DB_USER) -or ($DB_USER -eq '') ) {
-  $DB_USER = Read-Host -Prompt "Specify Postgres user"
-}
+$defaultUser = 'postgres'
+$DB_USER = Read-Host "Specify Postgres user [$($defaultUser)]"
+$DB_USER = ($defaultUser,$DB_USER)[[bool]$DB_USER]
+
+$DB_PWD = Read-Host -assecurestring "Specify Postgres password"
+$DB_PWD = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($DB_PWD))
 
 $defaultPort = 5432
 $DB_PORT = Read-Host "Specify Postgres Running Port [$($defaultPort)]"
 $DB_PORT = ($defaultPort,$DB_PORT)[[bool]$DB_PORT]
-
-if ([string]::IsNullOrWhiteSpace($DB_PORT)) {
-  $port = 5432
-}
 
 $host1 = "-h$DB_SERVER"
 $user = "-U$DB_USER"
 $port = "-p$DB_PORT"
 $dbname = "-dinventory"
 
-psql $host1 $port $user -W -f '../queries/create_db_user.sql'
+$env:PGPASSWORD = $DB_PWD;
+psql $host1 $port $user -f '../queries/create_db_user.sql'
 
 psql $host1 $port $user -f '../queries/create_db.sql'
 
@@ -44,9 +44,16 @@ psql $host1 $port $user $dbname -f '../queries/create_table_asset_sw.sql'
 psql $host1 $port $user $dbname -f '../queries/create_table_audit.sql'
 
 
-
-
 # Just for Temporary
+
+# While ( ($Null -eq $DB_SERVER) -or ($DB_SERVER -eq '') ) {
+#   $DB_SERVER = Read-Host -Prompt "Specify Postgres running host"
+# }
+
+# While ( ($Null -eq $DB_USER) -or ($DB_USER -eq '') ) {
+#   $DB_USER = Read-Host -Prompt "Specify Postgres user"
+# }
+
 # $DB_PWD = Read-Host -assecurestring "Specify Postgres password"
 # $DB_PWD = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($DB_PWD))
 
