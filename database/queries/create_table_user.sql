@@ -4,8 +4,8 @@
 
 CREATE TABLE public."user"
 (
-    "createdAt" bigint,
-    "updatedAt" bigint,
+    createdAt bigint NOT NULL,
+    updatedAt bigint NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     email text COLLATE pg_catalog."default",
     username text COLLATE pg_catalog."default",

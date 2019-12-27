@@ -4,8 +4,8 @@
 
 CREATE TABLE public.hardwareasset
 (
-    "createdAt" bigint NOT NULL,
-    "updatedAt" bigint NOT NULL,
+    createdAt bigint NOT NULL,
+    updatedAt bigint NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     asset_id character varying COLLATE pg_catalog."default" NOT NULL,
     location character varying COLLATE pg_catalog."default" NOT NULL,

@@ -4,8 +4,8 @@
 
 CREATE TABLE public.rolepermissionmap
 (
-    "createdAt" bigint,
-    "updatedAt" bigint,
+    createdAt bigint NOT NULL,
+    updatedAt bigint NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     role_id text COLLATE pg_catalog."default",
     permission_id text COLLATE pg_catalog."default",

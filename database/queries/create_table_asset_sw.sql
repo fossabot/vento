@@ -5,8 +5,8 @@
 CREATE TABLE public.softwareasset
 (
     id character varying COLLATE pg_catalog."default" NOT NULL,
-    "createdAt" bigint NOT NULL,
-    "updatedAt" bigint NOT NULL,
+    createdAt bigint NOT NULL,
+    updatedAt bigint NOT NULL,
     software character varying COLLATE pg_catalog."default" NOT NULL,
     version character varying COLLATE pg_catalog."default",
     date_of_expiry bigint,
@@ -17,7 +17,7 @@ CREATE TABLE public.softwareasset
     product_id character varying COLLATE pg_catalog."default" NOT NULL,
     notification_id character varying COLLATE pg_catalog."default",
     CONSTRAINT pk_software_asset PRIMARY KEY (id),
-    CONSTRAINT fk_hw_asset_consumer FOREIGN KEY (consumer)
+    CONSTRAINT fk_sw_asset_consumer FOREIGN KEY (consumer)
         REFERENCES public."user" (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,

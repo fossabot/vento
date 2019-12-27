@@ -4,8 +4,8 @@
 
 CREATE TABLE public.role
 (
-    "createdAt" bigint,
-    "updatedAt" bigint,
+    createdAt bigint NOT NULL,
+    updatedAt bigint NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     name text COLLATE pg_catalog."default",
     display_name text COLLATE pg_catalog."default",

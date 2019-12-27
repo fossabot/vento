@@ -43,6 +43,18 @@ psql $host1 $port $user $dbname -f '../queries/create_table_asset_sw.sql'
 
 psql $host1 $port $user $dbname -f '../queries/create_table_audit.sql'
 
+# psql $host1 $port $user $dbname -f '../queries/insert_seed_permissions.sql'
+
+psql $host1 $port $user $dbname -f '../queries/insert_seed_role.sql'
+
+# psql $host1 $port $user $dbname -f '../queries/insert_seed_role_perm_map.sql'
+
+psql $host1 $port $user $dbname -f '../queries/insert_seed_dept.sql'
+
+psql $host1 $port $user $dbname -f '../queries/insert_seed_prod.sql'
+
+# psql $host1 $port $user $dbname -f '../queries/insert_seed_user.sql'
+
 
 # Just for Temporary
 
