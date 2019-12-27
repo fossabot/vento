@@ -21,12 +21,17 @@ module.exports = {
       required: false
     },
     date_of_expiry: {
-      type: 'string',
+      type: 'number',
       required: false
     },
     notes: {
       type: 'string',
       required: false
+    },
+    consumer: {
+      type: 'string',
+      required: true,
+      unique: false
     },
     owner: {
       type: 'string',

@@ -49,7 +49,7 @@ module.exports.datastores = {
     *                                                                          *
     ***************************************************************************/
    adapter: 'sails-postgresql',
-   url: 'postgresql://vento:vento@localhost:5432/inventory'
+   url: 'postgresql://vento:control1234@localhost:5432/inventory'
 
   }
 

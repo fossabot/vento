@@ -4,8 +4,8 @@
 
 CREATE TABLE public."user"
 (
-    "createdAt" bigint,
-    "updatedAt" bigint,
+    createdAt bigint NOT NULL,
+    updatedAt bigint NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     email text COLLATE pg_catalog."default",
     username text COLLATE pg_catalog."default",
@@ -18,10 +18,8 @@ CREATE TABLE public."user"
     product_id text COLLATE pg_catalog."default",
     dept_id text COLLATE pg_catalog."default",
     CONSTRAINT user_pkey PRIMARY KEY (id),
-    CONSTRAINT user_email_key UNIQUE (email)
-,
-    CONSTRAINT user_username_key UNIQUE (username)
-,
+    CONSTRAINT user_email_key UNIQUE (email),
+    CONSTRAINT user_username_key UNIQUE (username),
     CONSTRAINT fk_user_dept_id FOREIGN KEY (dept_id)
         REFERENCES public.department (id) MATCH SIMPLE
         ON UPDATE NO ACTION

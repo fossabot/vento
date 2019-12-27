@@ -4,8 +4,8 @@
 
 CREATE TABLE public.notification
 (
-    "createdAt" bigint,
-    "updatedAt" bigint,
+    createdAt bigint NOT NULL,
+    updatedAt bigint NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     type text COLLATE pg_catalog."default",
     notes text COLLATE pg_catalog."default",
