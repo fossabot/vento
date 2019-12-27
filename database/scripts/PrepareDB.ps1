@@ -23,37 +23,38 @@ psql $host1 $port $user -f '../queries/create_db_user.sql'
 
 psql $host1 $port $user -f '../queries/create_db.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_department.sql'
+$vuser = "-Uvento"
+psql $host1 $port $vuser $dbname -f '../queries/create_table_department.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_product.sql'
+psql $host1 $port $vuser $dbname -f '../queries/create_table_product.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_role.sql'
+psql $host1 $port $vuser $dbname -f '../queries/create_table_role.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_permission.sql'
+psql $host1 $port $vuser $dbname -f '../queries/create_table_permission.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_role_perm_map.sql'
+psql $host1 $port $vuser $dbname -f '../queries/create_table_role_perm_map.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_user.sql'
+psql $host1 $port $vuser $dbname -f '../queries/create_table_user.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_notification.sql'
+psql $host1 $port $vuser $dbname -f '../queries/create_table_notification.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_asset_hw.sql'
+psql $host1 $port $vuser $dbname -f '../queries/create_table_asset_hw.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_asset_sw.sql'
+psql $host1 $port $vuser $dbname -f '../queries/create_table_asset_sw.sql'
 
-psql $host1 $port $user $dbname -f '../queries/create_table_audit.sql'
+psql $host1 $port $vuser $dbname -f '../queries/create_table_audit.sql'
 
-# psql $host1 $port $user $dbname -f '../queries/insert_seed_permissions.sql'
+psql $host1 $port $vuser $dbname -f '../queries/insert_seed_permissions.sql'
 
-psql $host1 $port $user $dbname -f '../queries/insert_seed_role.sql'
+psql $host1 $port $vuser $dbname -f '../queries/insert_seed_role.sql'
 
-# psql $host1 $port $user $dbname -f '../queries/insert_seed_role_perm_map.sql'
+psql $host1 $port $vuser $dbname -f '../queries/insert_seed_role_perm_map.sql'
 
-psql $host1 $port $user $dbname -f '../queries/insert_seed_dept.sql'
+psql $host1 $port $vuser $dbname -f '../queries/insert_seed_dept.sql'
 
-psql $host1 $port $user $dbname -f '../queries/insert_seed_prod.sql'
+psql $host1 $port $vuser $dbname -f '../queries/insert_seed_prod.sql'
 
-# psql $host1 $port $user $dbname -f '../queries/insert_seed_user.sql'
+psql $host1 $port $vuser $dbname -f '../queries/insert_seed_user.sql'
 
 
 # Just for Temporary

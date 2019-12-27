@@ -11,10 +11,8 @@ CREATE TABLE public.permission
     display_name text COLLATE pg_catalog."default",
     description text COLLATE pg_catalog."default",
     CONSTRAINT permission_pkey PRIMARY KEY (id),
-    CONSTRAINT permission_display_name_key UNIQUE (display_name)
-,
+    CONSTRAINT permission_display_name_key UNIQUE (display_name),
     CONSTRAINT permission_name_key UNIQUE (name)
-
 )
 WITH (
     OIDS = FALSE

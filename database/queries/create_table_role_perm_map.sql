@@ -10,10 +10,6 @@ CREATE TABLE public.rolepermissionmap
     role_id text COLLATE pg_catalog."default",
     permission_id text COLLATE pg_catalog."default",
     CONSTRAINT rolepermissionmap_pkey PRIMARY KEY (id),
-    CONSTRAINT rolepermissionmap_permission_id_key UNIQUE (permission_id)
-,
-    CONSTRAINT rolepermissionmap_role_id_key UNIQUE (role_id)
-,
     CONSTRAINT fk_roleperm_perm_id FOREIGN KEY (permission_id)
         REFERENCES public.permission (id) MATCH SIMPLE
         ON UPDATE NO ACTION

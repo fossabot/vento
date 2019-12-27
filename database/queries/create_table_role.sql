@@ -11,10 +11,8 @@ CREATE TABLE public.role
     display_name text COLLATE pg_catalog."default",
     description text COLLATE pg_catalog."default",
     CONSTRAINT role_pkey PRIMARY KEY (id),
-    CONSTRAINT role_display_name_key UNIQUE (display_name)
-,
+    CONSTRAINT role_display_name_key UNIQUE (display_name),
     CONSTRAINT role_name_key UNIQUE (name)
-
 )
 WITH (
     OIDS = FALSE

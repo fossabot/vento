@@ -12,7 +12,6 @@ CREATE TABLE public.department
     display_name character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT department_pkey PRIMARY KEY (id),
     CONSTRAINT department_name_key UNIQUE (name)
-
 )
 WITH (
     OIDS = FALSE
