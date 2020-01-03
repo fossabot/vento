@@ -37,6 +37,8 @@
   "dependencies": {
     "@babel/runtime": "^7.5.5",
     "axios": "^0.19.0",
+    "bootstrap": "^4.4.1",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-hook-form": "^3.29.4",
     "react-router-dom": "^5.1.2",
     "react-toastify": "^5.4.1"
