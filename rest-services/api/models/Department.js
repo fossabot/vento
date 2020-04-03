@@ -6,26 +6,26 @@
  */
 
 module.exports = {
-attributes: {
-  id: {
-    type: 'string',
-    required: true,
-    unique: true
-  },
-  name: {
-    type: 'string',
-    required: true,
-    unique: true
-  },
-  location: {
-    type: 'string',
-    required: true,
-    unique: false
-  },
-  display_name: {
-    type: 'string',
-    required: true,
-    unique: false
+  attributes: {
+    id: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+    name: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+    location: {
+      type: 'string',
+      required: true,
+      unique: false
+    },
+    display_name: {
+      type: 'string',
+      required: true,
+      unique: false
+    }
   }
-}
 };

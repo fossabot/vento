@@ -4,11 +4,11 @@
 
 CREATE TABLE public.audit
 (
+    createdAt bigint NOT NULL,
+    updatedAt bigint NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     type character varying COLLATE pg_catalog."default" NOT NULL,
     message character varying(2048) COLLATE pg_catalog."default" NOT NULL,
-    createdAt bigint NOT NULL,
-    updatedAt bigint NOT NULL,
     severity character varying COLLATE pg_catalog."default" NOT NULL,
     createdBy character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT audit_pkey PRIMARY KEY (id),

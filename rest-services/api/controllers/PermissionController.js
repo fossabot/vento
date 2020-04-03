@@ -10,7 +10,7 @@ const APIUtil = require('../utils/APIUtil');
 module.exports = {
 
     create: async function (req, res) {
-        let permissions = req.param('permissions');
+        let permissions = req.body;
         let payload = APIUtil.getCreatePayload(permissions);
         let createdPermissions = await Permission.createEach(payload).fetch();
         sails.log(`Created the permission(s) successfully: ${JSON.stringify(createdPermissions)}`);
@@ -26,16 +26,15 @@ module.exports = {
 
     getById: async function (req, res) {
         let id = req.param('id');
-        let permission = await Permission.findOne({ id: id });
+        let permission = await Permission.findOne({ id });
         sails.log(`Fetched the permission details by ${id}: ${JSON.stringify(permission)}`);
         return res.json({ permission: permission });
     },
 
     update: async function (req, res) {
         let id = req.param('id');
-        let payload = req.param('permission');
-        let updatedPermission = await Permission.updateOne({ id: id })
-            .set(payload);
+        let payload = req.body;
+        let updatedPermission = await Permission.updateOne({ id }).set(payload);
 
         if (updatedPermission) {
             sails.log(`Updated the permission of id ${id} with ${JSON.stringify(payload)}`);
@@ -49,7 +48,7 @@ module.exports = {
 
     delete: async function (req, res) {
         let id = req.param('id');
-        let deletedPermission = await Permission.destroyOne({id: id})
+        let deletedPermission = await Permission.destroyOne({ id })
         if (deletedPermission) {
             sails.log(`Deleted permission with id: ${id}.`);
         } else {

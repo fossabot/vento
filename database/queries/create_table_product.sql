@@ -16,7 +16,7 @@ CREATE TABLE public.product
     CONSTRAINT fk_product_dept_id FOREIGN KEY (department_id)
         REFERENCES public.department (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+        ON DELETE SET DEFAULT
 )
 WITH (
     OIDS = FALSE

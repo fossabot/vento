@@ -8,7 +8,6 @@
 const bcrypt = require('bcrypt');
 
 module.exports = {
-
   attributes: {
     id: {
       type: 'string',
@@ -56,20 +55,39 @@ module.exports = {
     dept_id: {
       type: 'string',
       required: true
-    }    
+    },
+    assets_consumed:{
+      collection:'assetconsumermap',
+      via: 'consumer_id'
+    },
+    assets_owned:{
+      collection: 'asset',
+      via: 'owner_id'
+    }
   },
-  customToJSON: function() {
+  customToJSON: function () {
     const { ['password']: omitted, ...rest } = this;
     return rest;
   },
-  beforeCreate: function(user, cb){
-    bcrypt.hash(user.password, 10, function(err, hash){
-      if(err) {
+  beforeCreate: function (user, cb) {
+    bcrypt.hash(user.password, 10, function (err, hash) {
+      if (err) {
         return cb(err);
       }
       user.password = hash;
       return cb();
     });
+  },
+  beforeUpdate: function (user, cb) {
+    if (user.password) {
+      bcrypt.hash(user.password, 10, function (err, hash) {
+        if (err) {
+          return cb(err);
+        }
+        user.password = hash;
+        return cb();
+      });
+    }
+    return cb();
   }
 };
-

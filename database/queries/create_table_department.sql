@@ -8,7 +8,7 @@ CREATE TABLE public.department
     updatedAt bigint NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     name text COLLATE pg_catalog."default" NOT NULL,
-    location text COLLATE pg_catalog."default",
+    location text COLLATE pg_catalog."default" NOT NULL,
     display_name character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT department_pkey PRIMARY KEY (id),
     CONSTRAINT department_name_key UNIQUE (name)

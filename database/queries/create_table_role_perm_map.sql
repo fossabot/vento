@@ -13,11 +13,11 @@ CREATE TABLE public.rolepermissionmap
     CONSTRAINT fk_roleperm_perm_id FOREIGN KEY (permission_id)
         REFERENCES public.permission (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
+        ON DELETE CASCADE,
     CONSTRAINT fk_roleperm_role_id FOREIGN KEY (role_id)
         REFERENCES public.role (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+        ON DELETE CASCADE
 )
 WITH (
     OIDS = FALSE

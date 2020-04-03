@@ -9,7 +9,7 @@ CREATE TABLE public.notification
     id character varying COLLATE pg_catalog."default" NOT NULL,
     type text COLLATE pg_catalog."default",
     notes text COLLATE pg_catalog."default",
-    definition text COLLATE pg_catalog."default",
+    receivers text COLLATE pg_catalog."default",
     CONSTRAINT notification_pkey PRIMARY KEY (id)
 )
 WITH (
