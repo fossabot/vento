@@ -37,13 +37,14 @@ This component is used to map all the components that are a part of project Vent
 The operations supported in this table include global search, column-wise filtering and choosing the columns to be displayed. Additional operations provided as part of the toolbar like creation of assets and uploading asset information as CSV come under `CustomToolbar`.
 
 On clicking any asset on the table, the `ViewAsset` component provides all other information pertaining to that particular asset to be viewed.
+
  ![image](readme_images/assetlist.png "assetlist")
 
 
 ‘On row click’ features like deletion of assets(on selecting one or more rows) and editing an asset's information(on selecting strictly one row) are available in `CustomToolbarSelect`.
 ![image](readme_images/editDelete.png "edit and delete options")
 
-##### Creating/ Editing an asset:
+#### Creating/ Editing an asset:
 
 [React modals](https://react-bootstrap.github.io/components/modal/) are used to serve as a dialog pop-up on asset create/edit. The `AssetForm` component provides the form with the required fields necessary for asset create/edit. A common form is used for both and based on the mode i.e, create or edit, the form content is changed.
 ![image](readme_images/createEdit.png "create and edit forms")
