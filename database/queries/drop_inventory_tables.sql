@@ -1,6 +1,8 @@
-DROP TABLE public.softwareasset;
+DROP TABLE public.assetnotificationmap;
 
-DROP TABLE public.hardwareasset;
+DROP TABLE public.assetconsumermap;
+
+DROP TABLE public.asset;
 
 DROP TABLE public.audit;
 

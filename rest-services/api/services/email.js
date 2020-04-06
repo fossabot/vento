@@ -1,5 +1,4 @@
 let nodemailer = require('nodemailer');
-// let joker = require('./joker');
 
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -10,31 +9,17 @@ let transporter = nodemailer.createTransport({
 });
 
 
-async function getSubscribedUsers() {
-    let usersSubscribedDigest = await Users.find({
-        dailydigest: true
-    });
-    return usersSubscribedDigest;
-}
-
-module.exports.sendEmail = async function() {
-    const subscribedUsers = await getSubscribedUsers();
-    let subsEmails = [];
-    subscribedUsers.map(function(elem) {
-        subsEmails.push(elem.email);
-    })
-    console.log('Subscribed Emails to send @ ' + new Date(), subsEmails);
-
-    // const randomeJoke = await joker.getRandomOne();
-    // const jokeContent = randomeJoke[0].content;
-    // console.log('Random Joke to send', randomeJoke, jokeContent);
-
+module.exports.sendEmail = async function(params) {
+    
+    let subsEmail = params['to'];
+    
+    console.log('Subscribed Emails to send @ ' + new Date(), subsEmail);
 
     let mailOptions = {
         from: 'emailbotgreenrooots@gmail.com',
-        to: subsEmails.join(),
-        subject: 'Jokking: Joke of the Day!',
-        text: 'Some Text'
+        to: subsEmail,
+        subject: params['subject'],
+        html: params['message']
     };
     
 
@@ -42,7 +27,7 @@ module.exports.sendEmail = async function() {
         if (error) {
           console.log(error);
         } else {
-          console.log('Email sent: ' + info.response);
+          console.log('Email has been sent successfully: ' + info.response);
         }
     });
 }

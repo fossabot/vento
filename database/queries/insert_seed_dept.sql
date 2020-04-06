@@ -1,1 +1,2 @@
-INSERT INTO public.department(createdAt, updatedAt, id, name, location, display_name) values (1577422289000, 4133894400000, '6ed6660e-2864-11ea-978f-2e728ce88125', 'PSM', 'Bangalore', 'Privileged Security Management Engineering (IDC)')
+INSERT INTO public.department(createdat, updatedat, id, name, location, display_name) VALUES (1582093758411, 4133894400000, '283802a0-52e1-11ea-b891-cd988dbdc9bf','Default', 'default', 'Default Department');
+INSERT INTO public.department(createdAt, updatedAt, id, name, location, display_name) values (1577422289000, 4133894400000, '6ed6660e-2864-11ea-978f-2e728ce88125', 'PSM', 'Bangalore', 'Privileged Security Management Engineering (IDC)');

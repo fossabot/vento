@@ -6,9 +6,7 @@
  */
 
 module.exports = {
-
   attributes: {
-
     id: {
       type: 'string',
       required: true,
@@ -16,7 +14,7 @@ module.exports = {
     },
     type: {
       type: 'string',
-      required: true,
+      required: false,
       unique: false
     },
     notes: {
@@ -24,13 +22,10 @@ module.exports = {
       required: false,
       unique: false
     },
-    definition: {
+    receivers: {
       type: 'string',
       required: true,
       unique: false
     }
-
-  },
-
+  }
 };
-

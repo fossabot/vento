@@ -10,7 +10,7 @@ const APIUtil = require('../utils/APIUtil');
 module.exports = {
 
     create: async function (req, res) {
-        let rolePermissionMaps = req.param('rolePermissionMaps');
+        let rolePermissionMaps = req.body;
         let payload = APIUtil.getCreatePayload(rolePermissionMaps);
         let createdRolePermissionMaps = await RolePermissionMap.createEach(payload).fetch();
         sails.log(`Created the rolePermissionMap(s) successfully: ${JSON.stringify(createdRolePermissionMaps)}`);
@@ -26,15 +26,15 @@ module.exports = {
 
     getById: async function (req, res) {
         let id = req.param('id');
-        let rolePermissionMap = await RolePermissionMap.findOne({ id: id });
+        let rolePermissionMap = await RolePermissionMap.findOne({ id });
         sails.log(`Fetched the rolePermissionMap details by ${id}: ${JSON.stringify(rolePermissionMap)}`);
         return res.json({ rolePermissionMap: rolePermissionMap });
     },
 
     update: async function (req, res) {
         let id = req.param('id');
-        let payload = req.param('rolePermissionMap');
-        let updatedRolePermissionMap = await RolePermissionMap.updateOne({ id: id })
+        let payload = req.body;
+        let updatedRolePermissionMap = await RolePermissionMap.updateOne({ id })
             .set(payload);
 
         if (updatedRolePermissionMap) {
@@ -49,7 +49,7 @@ module.exports = {
 
     delete: async function (req, res) {
         let id = req.param('id');
-        let deletedRolePermissionMap = await RolePermissionMap.destroyOne({id: id});
+        let deletedRolePermissionMap = await RolePermissionMap.destroyOne({ id });
         if (deletedRolePermissionMap) {
             sails.log(`Deleted RolePermissionMap with id: ${id}.`);
         } else {

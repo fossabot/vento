@@ -6,7 +6,6 @@
  */
 
 module.exports = {
-
   attributes: {
     id: {
       type: 'string',
@@ -27,8 +26,10 @@ module.exports = {
       type: 'string',
       required: false,
       unique: false
-    }
+    },
+    permissions:{
+      collection:'rolepermissionmap',
+      via: 'role_id'
+    },
   }
-
 };
-

@@ -8,7 +8,7 @@ const APIUtil = require('../utils/APIUtil');
 
 module.exports = {
     create: async function (req, res) {
-        let products = req.param('products');
+        let products = req.body;
         let payload = APIUtil.getCreatePayload(products);
         let createdProducts = await Product.createEach(payload).fetch();
         sails.log(`Created the product(s) successfully: ${JSON.stringify(createdProducts)}`);
@@ -24,15 +24,15 @@ module.exports = {
 
     getById: async function (req, res) {
         let id = req.param('id');
-        let product = await Product.findOne({ id: id });
+        let product = await Product.findOne({ id });
         sails.log(`Fetched the product details by ${id}: ${JSON.stringify(product)}`);
         return res.json({ product: product });
     },
 
     update: async function (req, res) {
         let id = req.param('id');
-        let payload = req.param('product');
-        let updatedProduct = await Product.updateOne({ id: id })
+        let payload = req.body;
+        let updatedProduct = await Product.updateOne({ id })
             .set(payload);
 
         if (updatedProduct) {
@@ -47,7 +47,7 @@ module.exports = {
 
     delete: async function (req, res) {
         let id = req.param('id');
-        let deletedProduct = await Product.destroyOne({id: id})
+        let deletedProduct = await Product.destroyOne({ id })
         if (deletedProduct) {
             sails.log(`Deleted product with id: ${id}.`);
         } else {

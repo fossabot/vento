@@ -6,20 +6,26 @@
  */
 
 module.exports = {
-
-  attributes: {
-    role_id: {
-      type: 'string',
-      required: true,
-      unique: true
-    },
-    permission_id: {
-      type: 'string',
-      required: true,
-      unique: true
-    }
+      attributes: {
+        id: {
+          type: 'string',
+          required: true,
+          unique: true
+        },
+          role_id: {
+          //type: 'string',
+          required: true,
+            unique: true,
+            model:'role'
+          },
+          permission_id: {
+            //type: 'string',
+            required: true,
+            unique: true,
+            model:'permission'
+          }
+          
+            },
+          
+          };
     
-  },
-
-};
-

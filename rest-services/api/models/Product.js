@@ -6,26 +6,26 @@
  */
 
 module.exports = {
-    attributes: {
-      id: {
-        type: 'string',
-        required: true,
-        unique: true
-      },
-      name: {
-        type: 'string',
-        required: true,
-        unique: true
-      },
-      display_name: {
-        type: 'string',
-        required: true,
-        unique: true
-      },
-      department_id: {
-        type: 'string',
-        required: true,
-        unique: true
-      }
+  attributes: {
+    id: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+    name: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+    display_name: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+    department_id: {
+      type: 'string',
+      required: true,
+      unique: true
     }
+  }
 };

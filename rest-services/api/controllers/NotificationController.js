@@ -25,16 +25,15 @@ module.exports = {
 
     getById: async function (req, res) {
         let id = req.param('id');
-        let notification = await Notification.findOne({ id: id });
+        let notification = await Notification.findOne({ id });
         sails.log(`Fetched the Notification details by ${id}: ${JSON.stringify(notification)}`);
         return res.json({ notification: notification });
     },
 
     update: async function (req, res) {
         let id = req.param('id');
-        let payload = req.param('notification');
-        let updatedNotification = await Notification.updateOne({ id: id })
-            .set(payload);
+        let payload = req.body;
+        let updatedNotification = await Notification.updateOne({ id }).set(payload);
 
         if (updatedNotification) {
             sails.log(`Updated the notification of id ${id} with ${JSON.stringify(payload)}`);
@@ -48,7 +47,7 @@ module.exports = {
 
     delete: async function (req, res) {
         let id = req.param('id');
-        let deletedNotification = await Notification.destroyOne({id: id})
+        let deletedNotification = await Notification.destroyOne({ id })
         if (deletedNotification) {
             sails.log(`Deleted notification with id: ${id}.`);
         } else {

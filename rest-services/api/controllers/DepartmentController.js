@@ -8,7 +8,7 @@ const APIUtil = require('../utils/APIUtil');
 
 module.exports = {
     create: async function (req, res) {
-        let depts = req.param('departments');
+        let depts = req.body;
         let payload = APIUtil.getCreatePayload(depts);
 
         let createdDepartments = await Department.createEach(payload).fetch();
@@ -25,16 +25,15 @@ module.exports = {
 
     getById: async function (req, res) {
         let id = req.param('id');
-        let department = await Department.findOne({ id: id });
+        let department = await Department.findOne({ id });
         sails.log(`Fetched the department details by ${id}: ${JSON.stringify(department)}`);
         return res.json({ department: department });
     },
 
     update: async function (req, res) {
         let id = req.param('id');
-        let payload = req.param('department');
-        let updatedDepartment = await Department.updateOne({ id: id })
-            .set(payload);
+        let payload = req.body;
+        let updatedDepartment = await Department.updateOne({ id }).set(payload);
 
         if (updatedDepartment) {
             sails.log(`Updated the department of id ${id} with ${JSON.stringify(payload)}`);
@@ -48,7 +47,7 @@ module.exports = {
 
     delete: async function (req, res) {
         let id = req.param('id');
-        let deletedDept = await Department.destroyOne({id: id})
+        let deletedDept = await Department.destroyOne({id })
         if (deletedDept) {
             sails.log(`Deleted department with id: ${id}.`);
         } else {
