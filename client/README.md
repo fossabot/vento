@@ -24,7 +24,7 @@ The control flow for the project vento's front end is as illustrated.
 - `Login.js` and `Logout.js`:
 
 These are the basic components that provide the functionality of logging in and out of Vento.
-![image](readme_images/loginLogout.png "login and logout")
+
 
 - `Landing.js`:
 
@@ -38,13 +38,13 @@ The operations supported in this table include global search, column-wise filter
 
 On clicking any asset on the table, the `ViewAsset` component provides all other information pertaining to that particular asset to be viewed.
 
- ![image](readme_images/assetlist.png "assetlist")
+
 
 
 ‘On row click’ features like deletion of assets(on selecting one or more rows) and editing an asset's information(on selecting strictly one row) are available in `CustomToolbarSelect`.
-![image](readme_images/editDelete.png "edit and delete options")
+
 
 #### Creating/ Editing an asset:
 
 [React modals](https://react-bootstrap.github.io/components/modal/) are used to serve as a dialog pop-up on asset create/edit. The `AssetForm` component provides the form with the required fields necessary for asset create/edit. A common form is used for both and based on the mode i.e, create or edit, the form content is changed.
-![image](readme_images/createEdit.png "create and edit forms")
+
