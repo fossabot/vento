@@ -11,23 +11,21 @@ const APIUtil = require('../utils/APIUtil');
 module.exports = {
     create: async function (req, res) {
         let roles = req.body;
-        var payload = APIUtil.getCreatePayload(roles);
-        let createdRoles = await Role.createEach(payload).fetch();
-        if(payload[0].permissions){
-            var permissions = payload[0].permissions;
-            for(let permission of permissions){
-                payloadData = {'role_id': payload[0].id,'permission_id': permission};
-                let newPayload = APIUtil.getCreatePayload(payloadData);
-                await RolePermissionMap.createEach(newPayload).fetch();
-            }
+        createdRoles = [];
+        
+        for (let role of roles) {
+            var payload = APIUtil.getCreatePayload(role);
+            let createdRole = await Role.createEach(payload).fetch();
+            createdRoles.push(createdRole);
         }
+        sails.log(`Created the Roles(s) successfully: ${JSON.stringify(createdRoles)}`);
         return res.json({ roles: createdRoles });
     },
     get: async function (req, res) {
         let query = req.query;
         sails.log(query);
         let roles = await Role.find({where: query,select:['display_name','description']});
-        
+        sails.log(`Fetched all Roles(s) successfully: ${JSON.stringify(roles)}`);
         return res.json({ roles: roles });
     },
     getById: async function (req, res) {
@@ -38,23 +36,15 @@ module.exports = {
             var permissionRecord = await Permission.findOne({where:{id: permission.permission_id},select: ['display_name']});
             role.permissionNames.push(permissionRecord.display_name);
         }
+        sails.log(`Fetched the Role details by ${id}: ${JSON.stringify(role)}`);
         return res.json({ role: role });
     },
 
     update: async function (req, res) {
         let id = req.param('id');
         let payload = req.body;
-        sails.log(payload);
-        var permissions=payload.permissions
         let updatedRole = await Role.updateOne({ id }).set(payload);
         if (updatedRole) {
-            /*let del = await RolePermissionMap.destroyOne({role_id: id});
-            sails.log(del);
-            for(let permission of permissions){
-                payloadData = {'role_id': id,'permission_id': permission};
-                let newPayload = APIUtil.getCreatePayload(payloadData);
-                await RolePermissionMap.createEach(newPayload).fetch();
-            }*/
             sails.log(`Updated the role of id ${id} with ${JSON.stringify(payload)}`);
         }
         else {
@@ -76,9 +66,9 @@ module.exports = {
     },
 
     deleteMulti: async function (req, res) {
-        let ids = req.param('ids');
+        let payload = req.body;
         let deletedRecords = await Role.destroy({
-            id: { in: ids }
+            id: { in: payload.ids }
         }).fetch();
         
         if (deletedRecords) {
