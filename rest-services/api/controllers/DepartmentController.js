@@ -9,11 +9,17 @@ const APIUtil = require('../utils/APIUtil');
 module.exports = {
     create: async function (req, res) {
         let depts = req.body;
-        let payload = APIUtil.getCreatePayload(depts);
+        createdDepts = [];
 
-        let createdDepartments = await Department.createEach(payload).fetch();
-        sails.log(`Created the department(s) successfully: ${JSON.stringify(createdDepartments)}`);
-        return res.json({ departments: createdDepartments });
+        for (let dept of depts)
+        {
+            let payload = APIUtil.getCreatePayload(dept);
+            let createdDept = await Department.createEach(payload).fetch();
+            createdDepts.push(createdDept[0]);
+        }
+
+        sails.log(`Created the department(s) successfully: ${JSON.stringify(createdDepts)}`);
+        return res.json({ departments: createdDepts });
     },
 
     get: async function (req, res) {

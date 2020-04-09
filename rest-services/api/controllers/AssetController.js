@@ -14,6 +14,7 @@ module.exports = {
     createdAssets = [];
     for( let asset of assets){
       let payload = (APIUtil.getCreatePayload(asset))[0];
+      console.log(payload)
 
       let createdAsset = await Asset.createEach([payload]).fetch();
       createdAssets.push(createdAsset[0]);
