@@ -66,9 +66,9 @@ module.exports = {
     },
 
     deleteMulti: async function (req, res) {
-        let payload = req.body;
+        let ids = req.body.ids;
         let deletedRecords = await Role.destroy({
-            id: { in: payload.ids }
+            id: { in: ids }
         }).fetch();
         
         if (deletedRecords) {

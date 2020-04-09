@@ -63,7 +63,7 @@ module.exports = {
     },
 
     deleteMulti: async function (req, res) {
-        let ids = req.param('ids');
+        let ids = req.body.ids;
         let deletedRecords = await Permission.destroy({
             id: { in: ids }
         }).fetch();

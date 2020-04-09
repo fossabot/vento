@@ -12,20 +12,15 @@ module.exports = {
   create: async function (req, res) {
     let assets = req.body;
     createdAssets = [];
-    for( let asset of assets){
-      let payload = (APIUtil.getCreatePayload(asset))[0];
-      console.log(payload)
-
-      let createdAsset = await Asset.createEach([payload]).fetch();
+    for (let asset of assets) {
+      let payload = (APIUtil.getCreatePayload(asset));
+      let createdAsset = await Asset.createEach(payload).fetch();
       createdAssets.push(createdAsset[0]);
-      payloadsData = [{'type': 'email', 'notes': '', 'receivers': payload.owner_id}, {'type': 'text', 'notes': '', 'receivers': payload.owner_id}];
-      for(let payloadData of payloadsData){
+      payloadsData = [{'type': 'email', 'notes': '', 'receivers': payload[0].owner_id}, {'type': 'text', 'notes': '', 'receivers': payload[0].owner_id}];
+      for (let payloadData of payloadsData) {
         let newPayload = APIUtil.getCreatePayload(payloadData);
-        console.log(newPayload)
         let notificationRecord = await Notification.createEach(newPayload).fetch();
-        let newPayloadData = {'asset_id': payload.id, 'notification_id': newPayload[0].id};
-        console.log(newPayloadData)
-
+        let newPayloadData = {'asset_id': payload[0].id, 'notification_id': newPayload[0].id};
         newPayload = APIUtil.getCreatePayload(newPayloadData);
         let assetNotificationRecord = await AssetNotificationMap.createEach(newPayload).fetch();
       }
@@ -37,7 +32,7 @@ module.exports = {
   get: async function (req, res) {
     let query = req.query;
     let assets = await Asset.find({where: query,select:['asset_type','product_id','department_id','owner_id','software_name','hardware_type']});
-    for(let asset of assets){
+    for (let asset of assets) {
       {asset.asset_type === 'Software' ? (
         asset.assetName = asset.software_name
       ) : (
@@ -50,6 +45,7 @@ module.exports = {
       let departmentRecord = await Department.findOne({id: asset.department_id});
       asset.departmentName = departmentRecord.display_name;
       }
+    sails.log(`Fetched all the Assets successfully: ${JSON.stringify(assets)}`);
     return res.json({ assets: assets });
   },
 
@@ -73,6 +69,7 @@ module.exports = {
     asset.productName = productRecord.display_name;
     let departmentRecord = await Department.findOne({where:{id: asset.department_id}, select: ['display_name']});
     asset.departmentName = departmentRecord.display_name;
+    sails.log(`Fetched the Asset details by ${id}: ${JSON.stringify(asset)}`);
     return res.json({ asset: asset });
   },
 
@@ -100,9 +97,9 @@ module.exports = {
   },
 
   deleteMulti: async function (req, res) {
-    let payload = req.body;
+    let ids = req.body.ids;
     let deletedRecords = await Asset.destroy({
-      id: { in: payload.ids }
+      id: { in: ids }
     }).fetch();
     if (deletedRecords) {
       sails.log(`All the Asset records deleted successfully.`);
