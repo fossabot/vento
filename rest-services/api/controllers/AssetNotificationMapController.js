@@ -9,11 +9,29 @@ const APIUtil = require('../utils/APIUtil');
 
 module.exports = {
   create: async function (req, res) {
+
+
+    let assetnotifs = req.body;
+    createdAssetnotifs = [];
+
+    for (let assetnotif of assetnotifs)
+    {
+        let payload = APIUtil.getCreatePayload(assetnotif);
+        let createdAssetnotif = await AssetNotificationMap.createEach(payload).fetch();
+        createdAssetnotifs.push(createdAssetnotif[0]);
+    }
+
+    sails.log(`Created the AssetNotification(s) successfully: ${JSON.stringify(createdAssetnotifs)}`);
+    return res.json({ assetnotifs: createdAssetnotifs });
+
+    /*
     let assetNotificationMaps = req.param('assetNotificationMaps');
     let payload = APIUtil.getCreatePayload(assetNotificationMaps);
     let createdAssetNotificationMaps = await AssetNotificationMap.createEach(payload).fetch();
     sails.log(`Created the assetNotificationMap(s) successfully: ${JSON.stringify(createdAssetNotificationMaps)}`);
     return res.json({ assetNotificationMaps: createdAssetNotificationMaps });
+    */
+
   },
 
   get: async function (req, res) {
