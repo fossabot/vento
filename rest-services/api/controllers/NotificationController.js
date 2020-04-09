@@ -9,11 +9,22 @@ const APIUtil = require('../utils/APIUtil');
 
 module.exports = {
     create: async function(req, res) {
-        let payload = req.param('notification');
-        let updatedPayload = APIUtil.addUUID(payload);
-        let notification = await Notification.create(updatedPayload).fetch();
-        sails.log(`Created the notification successfully: ${JSON.stringify(notification)}`);
-        return res.json({ notification: notification });
+
+
+        let notifs = req.body;
+        createdNotifs = [];
+
+        for (let notif of notifs)
+        {
+            let payload = APIUtil.getCreatePayload(notif);
+            let createdNotif = await Notification.createEach(payload).fetch();
+            createdNotifs.push(createdNotif[0]);
+        }
+
+        sails.log(`Created the notification(s) successfully: ${JSON.stringify(createdNotifs)}`);
+        return res.json({ notifications: createdNotifs });
+     
+
     },
 
     get: async function (req, res) {
