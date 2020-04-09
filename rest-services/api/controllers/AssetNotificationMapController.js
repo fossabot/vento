@@ -60,9 +60,9 @@ module.exports = {
       id: { in: payload.ids }
     }).fetch();
     if (deletedRecords) {
-      sails.log(`All the Asset records deleted successfully.`);
+      sails.log(`All the AssetNotificationMap records deleted successfully.`);
     } else {
-      sails.log(`Problem in deleting all the Asset records`);
+      sails.log(`Problem in deleting all the AssetNotificationMap records`);
     }
     return res.json({ count: deletedRecords.length });
   }
