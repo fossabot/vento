@@ -10,8 +10,12 @@ const APIUtil = require('../utils/APIUtil');
 module.exports = {
   create: async function (req, res) {
     let assetConsumerMaps = req.body;
-    let payload = APIUtil.getCreatePayload(assetConsumerMaps);
-    let createdAssetConsumerMaps = await AssetConsumerMap.createEach(payload).fetch();
+    createdAssetConsumerMaps = [];
+    for (let assetConsumerMap of assetConsumerMaps){
+      let payload = APIUtil.getCreatePayload(assetConsumerMap);
+      let createdAssetConsumerMap = await AssetConsumerMap.createEach(payload).fetch();
+      createdAssetConsumerMaps.push(createdAssetConsumerMap[0]);
+    }
     sails.log(`Created the AssetConsumerMap(s) successfully: ${JSON.stringify(createdAssetConsumerMaps)}`);
     return res.json({ assetConsumerMaps: createdAssetConsumerMaps });
   },
