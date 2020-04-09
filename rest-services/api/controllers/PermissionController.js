@@ -11,8 +11,12 @@ module.exports = {
 
     create: async function (req, res) {
         let permissions = req.body;
-        let payload = APIUtil.getCreatePayload(permissions);
-        let createdPermissions = await Permission.createEach(payload).fetch();
+        createdPermissions = [];
+        for (permission of permissions) {
+            let payload = APIUtil.getCreatePayload(permission);
+            let createdPermission = await Permission.createEach(payload).fetch();
+            createdPermissions.push(createdPermission[0]);
+        }
         sails.log(`Created the permission(s) successfully: ${JSON.stringify(createdPermissions)}`);
         return res.json({ permissions: createdPermissions });
     },
