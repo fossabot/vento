@@ -11,18 +11,18 @@ module.exports = {
     create: async function(req, res) {
 
 
-        let notifs = req.body;
-        createdNotifs = [];
+        let notifications = req.body;
+        createdNotifications = [];
 
-        for (let notif of notifs)
+        for (let notification of notifications)
         {
-            let payload = APIUtil.getCreatePayload(notif);
-            let createdNotif = await Notification.createEach(payload).fetch();
-            createdNotifs.push(createdNotif[0]);
+            let payload = APIUtil.getCreatePayload(notification);
+            let createdNotification = await Notification.createEach(payload).fetch();
+            createdNotifications.push(createdNotification[0]);
         }
 
-        sails.log(`Created the notification(s) successfully: ${JSON.stringify(createdNotifs)}`);
-        return res.json({ notifications: createdNotifs });
+        sails.log(`Created the notification(s) successfully: ${JSON.stringify(createdNotifications)}`);
+        return res.json({ notifications: createdNotifications });
      
 
     },
@@ -66,6 +66,19 @@ module.exports = {
         }
 
         return res.json({ notification: deletedNotification });
-    }
+    },
+
+    deleteMulti: async function (req, res) {
+        let ids = req.body.ids;
+        let deletedRecords = await Notification.destroy({
+          id: { in: ids }
+        }).fetch();
+        if (deletedRecords) {
+          sails.log(`All the Notification records deleted successfully.`);
+        } else {
+          sails.log(`Problem in deleting all the Notification records`);
+        }
+        return res.json({ count: deletedRecords.length });
+      }
 };
 

@@ -11,18 +11,18 @@ module.exports = {
   create: async function (req, res) {
 
 
-    let assetnotifs = req.body;
-    createdAssetnotifs = [];
+    let assetNotifications = req.body;
+    createdAssetNotificationMaps = [];
 
-    for (let assetnotif of assetnotifs)
+    for (let assetNotification of assetNotifications)
     {
-        let payload = APIUtil.getCreatePayload(assetnotif);
-        let createdAssetnotif = await AssetNotificationMap.createEach(payload).fetch();
-        createdAssetnotifs.push(createdAssetnotif[0]);
+        let payload = APIUtil.getCreatePayload(assetNotification);
+        let createdAssetNotificationMap = await AssetNotificationMap.createEach(payload).fetch();
+        createdAssetNotificationMaps.push(createdAssetNotificationMap[0]);
     }
 
-    sails.log(`Created the AssetNotification(s) successfully: ${JSON.stringify(createdAssetnotifs)}`);
-    return res.json({ assetnotifs: createdAssetnotifs });
+    sails.log(`Created the AssetNotification(s) successfully: ${JSON.stringify(createdAssetNotificationMaps)}`);
+    return res.json({ assetnotifs: createdAssetNotificationMaps });
 
 
   },
