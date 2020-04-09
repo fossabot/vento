@@ -11,8 +11,12 @@ module.exports = {
 
     create: async function (req, res) {
         let rolePermissionMaps = req.body;
-        let payload = APIUtil.getCreatePayload(rolePermissionMaps);
-        let createdRolePermissionMaps = await RolePermissionMap.createEach(payload).fetch();
+        createdRolePermissionMaps = [];
+        for (rolePermissionMap of rolePermissionMaps) {
+            let payload = APIUtil.getCreatePayload(rolePermissionMap);
+            let createdRolePermissionMap = await RolePermissionMap.createEach(payload).fetch();
+            createdRolePermissionMaps.push(createdRolePermissionMap[0]);
+        }
         sails.log(`Created the rolePermissionMap(s) successfully: ${JSON.stringify(createdRolePermissionMaps)}`);
         return res.json({ rolePermissionMaps: createdRolePermissionMaps });
     },
@@ -60,7 +64,7 @@ module.exports = {
     },
 
     deleteMulti: async function (req, res) {
-        let ids = req.param('ids');
+        let ids = req.body.ids;
         let deletedRecords = await RolePermissionMap.destroy({
             id: { in: ids }
         }).fetch();
