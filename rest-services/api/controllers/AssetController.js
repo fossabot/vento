@@ -14,13 +14,17 @@ module.exports = {
     createdAssets = [];
     for( let asset of assets){
       let payload = (APIUtil.getCreatePayload(asset))[0];
+
       let createdAsset = await Asset.createEach([payload]).fetch();
       createdAssets.push(createdAsset[0]);
       payloadsData = [{'type': 'email', 'notes': '', 'receivers': payload.owner_id}, {'type': 'text', 'notes': '', 'receivers': payload.owner_id}];
       for(let payloadData of payloadsData){
         let newPayload = APIUtil.getCreatePayload(payloadData);
+        console.log(newPayload)
         let notificationRecord = await Notification.createEach(newPayload).fetch();
         let newPayloadData = {'asset_id': payload.id, 'notification_id': newPayload[0].id};
+        console.log(newPayloadData)
+
         newPayload = APIUtil.getCreatePayload(newPayloadData);
         let assetNotificationRecord = await AssetNotificationMap.createEach(newPayload).fetch();
       }
