@@ -8,11 +8,22 @@ const APIUtil = require('../utils/APIUtil');
 
 module.exports = {
     create: async function (req, res) {
-        let products = req.body;
-        let payload = APIUtil.getCreatePayload(products);
-        let createdProducts = await Product.createEach(payload).fetch();
-        sails.log(`Created the product(s) successfully: ${JSON.stringify(createdProducts)}`);
-        return res.json({ products: createdProducts });
+
+
+        let prods = req.body;
+        createdProds = [];
+
+        for (let prod of prods)
+        {
+            let payload = APIUtil.getCreatePayload(prod);
+            let createdProd = await Product.createEach(payload).fetch();
+            createdProds.push(createdProd[0]);
+        }
+
+        sails.log(`Created the Product(s) successfully: ${JSON.stringify(createdProds)}`);
+        return res.json({ products: createdProds });
+        
+
     },
 
     get: async function (req, res) {

@@ -24,13 +24,6 @@ module.exports = {
     sails.log(`Created the AssetNotification(s) successfully: ${JSON.stringify(createdAssetnotifs)}`);
     return res.json({ assetnotifs: createdAssetnotifs });
 
-    /*
-    let assetNotificationMaps = req.param('assetNotificationMaps');
-    let payload = APIUtil.getCreatePayload(assetNotificationMaps);
-    let createdAssetNotificationMaps = await AssetNotificationMap.createEach(payload).fetch();
-    sails.log(`Created the assetNotificationMap(s) successfully: ${JSON.stringify(createdAssetNotificationMaps)}`);
-    return res.json({ assetNotificationMaps: createdAssetNotificationMaps });
-    */
 
   },
 
