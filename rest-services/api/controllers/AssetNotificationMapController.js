@@ -9,7 +9,7 @@ const APIUtil = require('../utils/APIUtil');
 
 module.exports = {
   create: async function (req, res) {
-    let assetNotificationMaps = req.param('assetNotificationMaps');
+    let assetNotificationMaps = req.body;
     let payload = APIUtil.getCreatePayload(assetNotificationMaps);
     let createdAssetNotificationMaps = await AssetNotificationMap.createEach(payload).fetch();
     sails.log(`Created the assetNotificationMap(s) successfully: ${JSON.stringify(createdAssetNotificationMaps)}`);
@@ -55,14 +55,14 @@ module.exports = {
   },
 
   deleteMulti: async function (req, res) {
-    let ids = req.param('ids');
+    let payload = req.body;
     let deletedRecords = await AssetNotificationMap.destroy({
-      id: { in: ids }
+      id: { in: payload.ids }
     }).fetch();
     if (deletedRecords) {
-      sails.log(`All the assetNotificationMap recorts deleted successfully.`);
+      sails.log(`All the Asset records deleted successfully.`);
     } else {
-      sails.log(`Problem in deleting all the assetNotificationMap records`);
+      sails.log(`Problem in deleting all the Asset records`);
     }
     return res.json({ count: deletedRecords.length });
   }
