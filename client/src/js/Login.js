@@ -29,12 +29,18 @@ const Login = props => {
   return (
     <main className="page-login">
       <section className="login-promo">
+          <div className="login-promo__body">
+            <h1 className="login__logo">
+              <span className="sr-only">Vento</span>
+            </h1>
+            <p className="lead">
+              <strong>Discover</strong>
+              World's most amazing Asset Management System for your organization
+            </p>
+          </div>
       </section>
       <section className="login-form">
         <form onSubmit = {handleSubmit(onSubmit)}>
-          <h1 className="login__logo">
-            <span className="sr-only">Vento</span>
-          </h1>
           <div>
             <label htmlFor = "userName">Username</label>
             <input name = "userName" ref = {register({ required: true })} />

@@ -1,0 +1,80 @@
+// Login Page
+
+.page-login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+.login-promo {
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    box-sizing: border-box;
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: 592px;
+        height: 649px;
+        bottom: 0;
+        background: url("../../images/img-login-abstract-bottom-left.svg");
+    }
+
+    &__body {
+        position: absolute;
+        top: 140px;
+        left: 50%;
+        @include transform(translateX(-50%));
+
+        .lead {
+            margin-top: 48px;
+
+            strong {
+                display: block;
+                font-weight: 500;
+                color: $color-secondary;
+            }
+        }
+    }
+}
+
+.login-form {
+    position: absolute;
+    width: 50%;
+    left: 50%;
+    height: 100vh;
+    box-sizing: border-box;
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: 319px;
+        height: 302px;
+        top: 0;
+        right: 0;
+        background: url("../../images/img-login-abstract-right.svg") ;
+    }
+}
+
+.login__logo {
+    display: block;
+    width: 161px;
+    height: 50px;
+    background: url("../../images/img-logo.svg");
+}
+
+.login-abstract-lb {
+    width: 592px;
+    height: 649px;
+    background: url("../../images/img-login-abstract-bottom-left.svg");
+}
+
+.login-abstract-rt {
+    width: 319px;
+    height: 302px;
+    background: url("../../images/img-login-abstract-right.svg");
+}
