@@ -42,11 +42,11 @@ const Login = props => {
       <section className="login-form">
         <div className="login-form__body">
           <h2 className="login-form__title">Welcome</h2>
-          <p>Please login to continue using Vento</p>
+          <p className="login-form__desc">Please login to continue using Vento</p>
           <form onSubmit = {handleSubmit(onSubmit)}>
             <div className="form-group">
               <label htmlFor = "userName">Username</label>
-              <input className="form-control" name = "userName" ref = {register({ required: true })} />
+              <input type="text" className="form-control" name = "userName" ref = {register({ required: true })} />
               <span className = "error">
                 {errors.userName && "User name is required."}
               </span>
@@ -65,7 +65,7 @@ const Login = props => {
               </span>
             </div>
 
-            <button type = "submit" className="btn btn-primary btn-primary--lg btn-block">
+            <button type = "submit" className="btn btn-primary btn-primary--lg btn-block mt-5">
               <div className="btn__value">Login</div>
             </button>
           </form>

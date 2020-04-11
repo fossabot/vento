@@ -32,11 +32,16 @@
 
         .lead {
             margin-top: 48px;
+            font-weight: 400;
+            font-size: 24px;
+            color: $color-grey-dark;
 
             strong {
                 display: block;
-                font-weight: 500;
+                font-weight: 700;
                 color: $color-secondary;
+                font-size: 18px;
+                margin-bottom: 8px;
             }
         }
     }
@@ -65,6 +70,59 @@
         left: 20%;
         width: calc(100% - 300px);
         @include transform(translateX(-30%));
+
+        @media screen and (max-width: 1172px) {
+            width: calc(100% - 160px);
+            @include transform(translateX(-10%));
+        }
+
+        .form-group label {
+            color: $color-grey-brand;
+            letter-spacing: -0.024rem;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            
+            &.form-control {
+                border-radius: 2px;
+                height: 48px;
+                color: $color-black;
+                font-weight: $theme-fw-bold;
+                font-size: 18px;
+
+                &:focus {
+                    border-color: $color-primary-light;
+                    outline: 0;
+                    @include box-shadow(0, 0, 4px, rgba($color-primary-light, 1));
+                }
+            }
+        }
+    }
+
+    &__title {
+        position: relative;
+        font-weight: $theme-fw-xbold;
+        font-size: 36px;
+        padding-bottom: 12px;
+        margin-bottom: 32px;
+        color: $color-black;
+
+        &:after {
+            position: absolute;
+            content: "";
+            width: 60px;
+            height: 3px;
+            left: 0;
+            bottom: 0;
+            background: linear-gradient(to right, $color-primary-light, $color-secondary);
+        }
+    }
+
+    &__desc {
+        margin-bottom: 32px;
+        color: $color-grey-slate;
+        letter-spacing: -0.024rem;
     }
 }
 
