@@ -27,29 +27,38 @@ const Login = props => {
   }
 
   return (
-    <form onSubmit = {handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor = "userName">Username</label>
-        <input name = "userName" ref = {register({ required: true })} />
-        <span className = "error">
-          {errors.userName && "User name is required."}
-        </span>
-      </div>
+    <main className="page-login">
+      <section className="login-promo">
+      </section>
+      <section className="login-form">
+        <form onSubmit = {handleSubmit(onSubmit)}>
+          <h1 className="login__logo">
+            <span className="sr-only">Vento</span>
+          </h1>
+          <div>
+            <label htmlFor = "userName">Username</label>
+            <input name = "userName" ref = {register({ required: true })} />
+            <span className = "error">
+              {errors.userName && "User name is required."}
+            </span>
+          </div>
 
-      <div>
-        <label htmlFor = "password">Password</label>
-        <input
-          name = "password"
-          type = "password"
-          ref = {register({ required: true })}
-        />
-        <span className = "error">
-          {errors.password && "Password is required."}
-        </span>
-      </div>
+          <div>
+            <label htmlFor = "password">Password</label>
+            <input
+              name = "password"
+              type = "password"
+              ref = {register({ required: true })}
+            />
+            <span className = "error">
+              {errors.password && "Password is required."}
+            </span>
+          </div>
 
-      <input type = "submit" />
-    </form>
+          <input type = "submit" />
+        </form>
+      </section>
+    </main>
   );
 };
 
