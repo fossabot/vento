@@ -58,6 +58,14 @@
         right: 0;
         background: url("../../images/img-login-abstract-right.svg") ;
     }
+
+    &__body {
+        position: absolute;
+        top: 140px;
+        left: 20%;
+        width: calc(100% - 300px);
+        @include transform(translateX(-30%));
+    }
 }
 
 .login__logo {

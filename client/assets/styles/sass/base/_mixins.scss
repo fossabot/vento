@@ -7,3 +7,17 @@
 	-ms-transform: $transforms;
 	transform: $transforms;
 }
+
+// Transition
+@mixin transition($x...){
+    -webkit-transition: $x;
+    -moz-transition: $x;
+    -ms-transition: $x;
+    -o-transition: $x;
+    transition: $x;
+}
+
+// Theme Transitions
+@mixin simple-transition() {
+    @include transition(all 2s);
+}
