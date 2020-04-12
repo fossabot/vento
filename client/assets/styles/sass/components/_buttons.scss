@@ -53,3 +53,13 @@ $btn-height-lg:     60px;
 .btn-primary:hover::after {
     opacity: 1;
   }
+
+
+// Button Light
+.btn-light {
+    background-color: $color-grey-verylight;
+}
+
+.btn + .btn {
+    margin-left: 4px;
+}

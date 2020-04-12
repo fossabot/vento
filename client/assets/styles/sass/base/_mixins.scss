@@ -19,7 +19,7 @@
 
 // Theme Transitions
 @mixin simple-transition() {
-    @include transition(all 2s);
+    @include transition(all 0.5s);
 }
 
 // Box Shadow
@@ -34,3 +34,13 @@
       box-shadow: $top $left $blur $color;
     }
   }
+
+
+@keyframes grow {
+  0%   {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

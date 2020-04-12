@@ -1,14 +1,31 @@
 // Masthead
+$mashead-size: 78px;
 $gutter-layout-core: 8px;
 
+body {
+    background-color: $color-grey-verylight;
+}
+
 .masthead {
+    @include box-shadow(0, 0, 3px, rgba($color-black, 0.3));
+    border: 0;
+    height: $mashead-size;
+
     & &-navbar__spacer {
         width: 280px;
         margin: $gutter-layout-core;
     }
 
     & &-body {
+        padding: 0 16px;
 
+        &__title {
+            margin: 0;
+            font-size: 22px;
+            font-weight: $theme-fw-xbold;
+            color: $color-black;
+            letter-spacing: -0.025em;
+        }
     }
 }
 

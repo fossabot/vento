@@ -56,7 +56,6 @@ const Landing = props => {
               />
             ))}
           </Switch>
-          <main className="flex-grow-1">
           <Switch>
             {routes.map((route, index) => (
               <Route
@@ -67,7 +66,6 @@ const Landing = props => {
               />
             ))}
           </Switch>
-        </main>
         </div>
         
       </Router>

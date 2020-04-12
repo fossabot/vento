@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import CustomToolbar from "./CustomToolbar";
 import CustomToolbarSelect from "./CustomToolbarSelect";
 import URIs from "./utils/apis";
+import Logout from "./Logout";
 
 function AssetList(props) {
   const { loading, data, error } = useFetch(URIs.assets);
@@ -81,16 +82,33 @@ function AssetList(props) {
   };
 
   return (
-    <div className="assetlist">
-      <h1 className="assetlist-title"> LIST OF ASSETS </h1>
-      <div className="asset-list">
+    <div>
+      <header className="fixed-top bg-white border-bottom box-shadow masthead d-flex">
+        <div className="masthead-navbar__spacer"></div>
+        <div className="masthead-body flex-grow-1 d-flex justify-content-between align-items-center">
+            <div className="d-flex align-items-center">
+              <h2 className="masthead-body__title mr-2">Assets</h2>
+              <span class="badge badge-primary mt-1">285</span>
+            </div>
+            <div className="d-flex justify-content-end">
+              <button className="btn btn-light">
+                Import Assets
+              </button>
+              <button className="btn btn-primary">
+                <span className="btn__value">Add Assets</span>
+              </button>
+              <Logout hist = {props.history} />
+            </div>
+        </div>
+      </header>
+      <main className="main-content">
         <MUIDataTable
           title={"Assets"}
           data={rowData}
           columns={columns}
           options={options}
         />
-      </div>
+      </main>
     </div>
   );
 }

@@ -8,34 +8,47 @@ const SideBar = () => {
 
   return (
     <nav className="navbar-primary">
-      <ul className = "sidebar">
-        <li>
+      <header className="navbar-primary__header">
+        <h1 className="navbar-primary-brand">
+          <span className="sr-only">
+            Vento
+          </span>
+        </h1>
+        <button className="navbar-primary-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+      <ul className = "navbar-primary__nav">
+        <li className="menu-item">
           <NavLink
             to = "/overview"
-            activeStyle = {{
-              fontWeight: "bold",
-              color: "blue"
-            }}
-            className = "over"
+            className = "menu-item__link"
           >
             {" "}
-            OVERVIEW{" "}
+            Overview{" "}
           </NavLink>
         </li>
-        <li>
+        <li className="menu-item">
           <NavLink
             to = "/assetlist"
-            activeStyle = {{
-              fontWeight: "bold",
-              color: "blue"
-            }}
-            className = "list"
+            className = "menu-item__link"
           >
             {" "}
-            ASSETLIST{" "}
+            Asset List{" "}
           </NavLink>
         </li>
+        <li className="menu-item">
+          <a className='menu-item__link' href="">Lab Owners</a>
+        </li>
+        <li className="menu-item">
+          <a className='menu-item__link' href="">Lab Owners</a>
+        </li>
       </ul>
+      <footer className="navbar-primary__footer">
+
+      </footer>
     </nav>
   );
 };

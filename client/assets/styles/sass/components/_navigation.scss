@@ -3,12 +3,171 @@
 $primary-nav-width:             280px;
 $primary-nav-width--minimized:  80px;
 
+
+@keyframes navgrow {
+    0%   {
+        width: 0%;
+        .navbar-primary__nav {
+            opacity: 0;
+        }
+    }
+    100% {
+        width: $primary-nav-width;
+        .navbar-primary__nav {
+            opacity: 1;
+        }
+    }
+}
+
 // Primary Navigation
 .navbar-primary {
+    $navbar-primary-name: '.navbar-primary';
+    position: fixed;
     margin: 8px;
     height: calc(100vh - 16px);
     border-radius: 6px;
     width: $primary-nav-width;
     background-image: linear-gradient(140deg, $color-primary-dark 60%, $color-secondary 180%);
     z-index: 9999;
+    // animation: navgrow 1s forwards;
+
+    // Toggle Button
+    & &-toggle {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        border: 0;
+        margin: 8px 0;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        span {
+            @include simple-transition;
+            position: absolute;
+            right: 0;
+            border-radius: 2px;
+            height: 2px;
+            background-color: $color-white;
+            opacity: 0.5;
+        }
+
+        span:nth-child(1) {
+            top: 0;            
+            width: 11px;
+        }
+
+        span:nth-child(2) {
+            top: 8px;
+            width: 22px;
+        }
+
+        span:nth-child(3) {
+            top: 16px;
+            width: 16px;
+        }
+
+        // Hover State
+        &:hover,
+        &:focus {
+            span {
+                opacity: 1;
+                width: 100%;
+            }
+        }
+    }
+
+    // Brand
+    & &-brand {
+        width: 88px;
+        height: 34px;
+        margin: 0;
+        background: url("../../images/img-logo-dark.svg") no-repeat center center;
+    }
+
+    // Header
+    & &__header {
+        height: 70px;
+        padding: 16px 24px;
+        border-bottom: solid 1px rgba(255,255,255,0.2);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        #{$navbar-primary-name}-brand {
+
+        }
+
+        #{$navbar-primary-name}-brand {
+            
+        }
+    }
+
+    // Footer
+    & &__footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 70px;
+        border-top: solid 1px rgba(255,255,255,0.2);
+    }
+}
+
+
+// Primary Navigation Menu
+.navbar-primary {
+    & &__nav {
+        margin: 16px;
+        padding: 0;
+        list-style: none;
+
+        .menu-item {
+            position: relative;
+
+            &__link {
+                @include simple-transition;
+                position: relative;
+                display: block;
+                padding: 12px 16px;
+                font-size: 14px;
+                font-weight: $theme-fw-bold;
+                color: $color-primary-light;
+                letter-spacing: -0.15px;
+                text-decoration: none;
+
+                &:before {
+                    @include simple-transition;
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: unset;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    border-radius: 8px;
+                    background-color: $color-black;
+                    background-blend-mode: soft-light;
+                    mix-blend-mode: soft-light;
+                    opacity: 0;
+                }
+
+                // Hover State
+                &:hover,
+                &:focus {
+                    color: $color-white;
+                }
+
+                // Active State
+                &.active {
+                    color: $color-white;
+
+                    &:before {
+                        animation: grow 0.3s forwards;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
 }
