@@ -1,0 +1,14 @@
+// Navigation
+
+$primary-nav-width:             280px;
+$primary-nav-width--minimized:  80px;
+
+// Primary Navigation
+.navbar-primary {
+    margin: 8px;
+    height: calc(100vh - 16px);
+    border-radius: 6px;
+    width: $primary-nav-width;
+    background-image: linear-gradient(140deg, $color-primary-dark 60%, $color-secondary 180%);
+    z-index: 9999;
+}

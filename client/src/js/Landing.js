@@ -45,26 +45,31 @@ const Landing = props => {
     <div>
       <Header hist = {props.history} />
       <Router>
-        <Switch>
-          {routes.map((route, index) => (
-            <Route
-              key = {index}
-              path = {route.path}
-              exact = {route.exact}
-              children = {<route.sidebar />}
-            />
-          ))}
-        </Switch>
-        <Switch>
-          {routes.map((route, index) => (
-            <Route
-              key = {index}
-              path = {route.path}
-              exact = {route.exact}
-              children = {<route.component />}
-            />
-          ))}
-        </Switch>
+        <div className='d-flex flex-row'>
+          <Switch>
+            {routes.map((route, index) => (
+              <Route
+                key = {index}
+                path = {route.path}
+                exact = {route.exact}
+                children = {<route.sidebar />}
+              />
+            ))}
+          </Switch>
+          <main className="flex-grow-1">
+          <Switch>
+            {routes.map((route, index) => (
+              <Route
+                key = {index}
+                path = {route.path}
+                exact = {route.exact}
+                children = {<route.component />}
+              />
+            ))}
+          </Switch>
+        </main>
+        </div>
+        
       </Router>
     </div>
   );

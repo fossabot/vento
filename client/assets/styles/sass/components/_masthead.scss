@@ -1,0 +1,20 @@
+// Masthead
+$gutter-layout-core: 8px;
+
+.masthead {
+    & &-navbar__spacer {
+        width: 280px;
+        margin: $gutter-layout-core;
+    }
+
+    & &-body {
+
+    }
+}
+
+// Navbar Collapsed
+.theme-navbar--minimize .masthead {
+    & &-navbar__spacer {
+        width: 80px;
+    }
+}

@@ -1,10 +1,12 @@
 // Base Partials
-@import "base/mixins.scss";
-@import "base/colors.scss";
-@import "base/typography.scss";
+@import "base/mixins";
+@import "base/colors";
+@import "base/typography";
 
 // Components
-@import "components/buttons.scss";
+@import "components/buttons";
+@import "components/masthead";
+@import "components/navigation";
 
 // Pages
-@import "pages/login.scss"
+@import "pages/login"
