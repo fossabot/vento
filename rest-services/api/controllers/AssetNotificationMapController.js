@@ -66,18 +66,14 @@ module.exports = {
         return res.json({assetNotificationMap: deletedAssetNotificationMap});
     },
 
-    deleteMulti: async function (req, res) {
-        let ids = req.param('ids');
-        let deletedRecords = await AssetNotificationMap.destroy({
-            id: {
-                in: ids
-            }
-        }).fetch();
-        if (deletedRecords) {
-            sails.log(`All the assetNotificationMap recorts deleted successfully.`);
-        } else {
-            sails.log(`Problem in deleting all the assetNotificationMap records`);
-        }
-        return res.json({count: deletedRecords.length});
+  deleteMulti: async function (req, res) {
+    let payload = req.body;
+    let deletedRecords = await AssetNotificationMap.destroy({
+      id: { in: payload.ids }
+    }).fetch();
+    if (deletedRecords) {
+      sails.log(`All the AssetNotificationMap records deleted successfully.`);
+    } else {
+      sails.log(`Problem in deleting all the AssetNotificationMap records`);
     }
 };

@@ -65,18 +65,15 @@ module.exports = {
         return res.json({assetConsumerMap: deletedAssetConsumerMap});
     },
 
-    deleteMulti: async function (req, res) {
-        let ids = req.param('ids');
-        let deletedRecords = await AssetConsumerMap.destroy({
-            id: {
-                in: ids
-            }
-        }).fetch();
-        if (deletedRecords) {
-            sails.log(`All the AssetConsumerMap recorts deleted successfully.`);
-        } else {
-            sails.log(`Problem in deleting all the AssetConsumerMap records`);
-        }
-        return res.json({count: deletedRecords.length});
+  deleteMulti: async function (req, res) {
+    let ids = req.body.ids;
+    let deletedRecords = await AssetConsumerMap.destroy({
+      id: { in: ids }
+    }).fetch();
+    if (deletedRecords) {
+      sails.log(`All the AssetConsumerMap recorts deleted successfully.`);
+    } else {
+      sails.log(`Problem in deleting all the AssetConsumerMap records`);
+
     }
 };
