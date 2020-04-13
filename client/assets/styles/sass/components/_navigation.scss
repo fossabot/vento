@@ -21,6 +21,9 @@ $primary-nav-width--minimized:  80px;
 
 // Primary Navigation
 .navbar-primary {
+    $root-name: '.navbar-primary';
+
+    @include simple-transition;
     $navbar-primary-name: '.navbar-primary';
     position: fixed;
     margin: 8px;
@@ -69,21 +72,30 @@ $primary-nav-width--minimized:  80px;
         }
 
         // Hover State
-        &:hover,
-        &:focus {
+        &:hover {
             span {
                 opacity: 1;
                 width: 100%;
+            }
+        }
+
+        // Minimized
+        &--minimize {
+            span {
+                right: unset;
+                left: 0;
             }
         }
     }
 
     // Brand
     & &-brand {
+        @include simple-transition;
         width: 88px;
         height: 34px;
         margin: 0;
         background: url("../../images/img-logo-dark.svg") no-repeat center center;
+        opacity: 1;
     }
 
     // Header
@@ -111,6 +123,16 @@ $primary-nav-width--minimized:  80px;
         width: 100%;
         height: 70px;
         border-top: solid 1px rgba(255,255,255,0.2);
+    }
+
+    // Navbar Minimized
+    &--minimize & {
+        width: $primary-nav-width--minimized;
+
+        #{$root-name}-brand {
+            opacity: 0;
+            width: 0;
+        }
     }
 }
 
