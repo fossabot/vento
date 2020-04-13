@@ -88,6 +88,7 @@ module.exports.routes = {
   'post /api/notifications': 'NotificationController.create',
   'put /api/notifications/:id': 'NotificationController.update',
   'delete /api/notifications/:id': 'NotificationController.delete',
+  'post /api/notifications/multiDelete': 'NotificationController.deleteMulti',
 
   /*
       Hardware / Software Assets Related Routes

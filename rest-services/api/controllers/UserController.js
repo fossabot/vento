@@ -12,18 +12,24 @@ const email = require('../services/email');
 module.exports = {
   
     create: async function(req, res) {
-        let payload = req.body;
-        let password = payload['password'];
-        let updatedPayload = APIUtil.addUUID(payload);
-        let user = await User.create(updatedPayload).fetch();
-        sails.log(`Created the user successfully: ${JSON.stringify(user)}`);
-        let emailPayload = APIUtil.createEmailPayload(
-            user['email'], 
-            `${user['first_name']}, your account has been created.`,
-            `Your username is, <b>${user['username']}</b> and password is, <b>${password}</b>. Please login and complete your profile from here`);
-        sails.log(emailPayload);
-        email.sendEmail(emailPayload);
-        return res.json({ user: APIUtil.omit('password', user) });
+        let users = req.body;
+        createdUsers = [];
+        for (let user of users) {
+            let password = user['password'];
+            //let updatedPayload = APIUtil.addUUID(payload);
+            let payload = APIUtil.getCreatePayload(user);
+            let createdUser = await User.createEach(payload).fetch();
+            sails.log(`Created the user successfully: ${JSON.stringify(user)}`);
+            let emailPayload = APIUtil.createEmailPayload(
+                createdUser['email'], 
+                `${createdUser['first_name']}, your account has been created.`,
+                `Your username is, <b>${createdUser['username']}</b> and password is, <b>${password}</b>. Please login and complete your profile from here`);
+            sails.log(emailPayload);
+            email.sendEmail(emailPayload);
+            createdUsers.push((APIUtil.omit('password', createdUser))[0])
+        }
+        sails.log(`Created the User(s) successfully: ${JSON.stringify(createdUsers)}`);
+        return res.json({ users: createdUsers });
     },
 
     get: async function (req, res) {
@@ -68,7 +74,7 @@ module.exports = {
     },
 
     deleteMulti: async function (req, res) {
-        let ids = req.param('ids');
+        let ids = req.body.ids;
         let deletedRecords = await User.destroy({
             id: { in: ids }
         }).fetch();
