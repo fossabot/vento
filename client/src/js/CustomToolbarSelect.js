@@ -25,12 +25,12 @@ const defaultToolbarSelectStyles = {
   }
 };
 
-const CustomToolbarSelect = props => {
+const CustomToolbarSelect = (props) => {
   const { data, error } = useFetch("/api/assets");
   var rowData = data["assets"];
   const [editModalShow, setEditModalShow] = useState(false);
   const [dataToEdit, setDataToEdit] = useState({});
-  function handleMyDelete(selectedRows) {
+  const handleMyDelete =(selectedRows) => {
     const indexToDelete = selectedRows.data.map(item => item.dataIndex);
     var idsToDelete = [];
     for (var i = 0; i < indexToDelete.length; i++) {
@@ -40,8 +40,8 @@ const CustomToolbarSelect = props => {
     location.reload();
   }
 
-  const onSubmit = data => {
-    async function editAsset() {
+  const onSubmit = (data) => {
+    const editAsset = async () => {
       try {
         var payload = data;
         payload["product_id"] = dataToEdit.product_id;
@@ -62,7 +62,7 @@ const CustomToolbarSelect = props => {
     window.location.reload(false);
   };
 
-  const EditModal = props => {
+  const EditModal = (props) => {
     return (
       <Modal
         {...props}
@@ -90,7 +90,7 @@ const CustomToolbarSelect = props => {
     );
   };
 
-  async function handleEdit(selectedRows) {
+  const handleEdit = async (selectedRows) => {
     const indexToEdit = selectedRows.data.map(item => item.dataIndex);
     var idToEdit = rowData[indexToEdit]["id"];
     const data = await axios(URIs.assets + "/" + idToEdit);
@@ -109,7 +109,7 @@ const CustomToolbarSelect = props => {
         </IconButton>
       </Tooltip>
       {(() => {
-        if (Object.keys(props.selectedRows.data).length == 1) {
+        if (Object.keys(props.selectedRows.data).length === 1) {
           return (
             <Tooltip title = {"Edit"}>
               <IconButton

@@ -3,13 +3,13 @@ import useForm from "react-hook-form";
 import { toast } from "react-toastify";
 import { login } from "./utils/auth";
 
-const Login = props => {
+const Login = (props) => {
   const { register, handleSubmit, errors } = useForm(); // initialise the hook
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     performLogin(data);
   };
 
-  async function performLogin(data) {
+  const performLogin = async (data) =>{
     try {
       const payload = {};
       payload["username"] = data.userName;

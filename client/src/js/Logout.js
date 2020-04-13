@@ -2,11 +2,11 @@ import React from "react";
 import { logout } from "./utils/auth";
 import ExitToAppRounded from "@material-ui/icons/ExitToAppRounded";
 
-function refreshPage() {
+const refreshPage =() => {
   window.location.reload(false);
 }
 
-const Logout = props => {
+const Logout = (props) => {
   const handleLogout = () => {
     logout();
     refreshPage();

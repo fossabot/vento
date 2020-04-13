@@ -6,7 +6,7 @@ import AssetList from "./AssetList";
 import Overview from "./Overview";
 import ViewAsset from "./ViewAsset";
 
-const Landing = props => {
+const Landing = (props) => {
   const routes = [
     {
       path: "/",
@@ -67,7 +67,7 @@ const Landing = props => {
             ))}
           </Switch>
         </div>
-        
+
       </Router>
     </div>
   );

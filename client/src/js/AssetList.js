@@ -6,9 +6,10 @@ import CustomToolbar from "./CustomToolbar";
 import CustomToolbarSelect from "./CustomToolbarSelect";
 import URIs from "./utils/apis";
 import Logout from "./Logout";
+import ErrorDisplay from "./ErrorDisplay";
 
 function AssetList(props) {
-  const { loading, data, error } = useFetch(URIs.assets);
+  const {  data, error } = useFetch(URIs.assets);
   var rowData = data["assets"];
   const columns = [
     {
@@ -76,7 +77,7 @@ function AssetList(props) {
     ),
     textLabels: {
       body: {
-        noMatch: props.isLoading ? <Loader /> : "Error: " + error
+        noMatch: <ErrorDisplay errormsg = {error}/>
       },
     },
   };

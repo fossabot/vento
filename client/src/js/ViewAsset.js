@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import URIs from "./utils/apis";
 import { useFetch } from "./useFetch";
 
-const ViewAsset = props => {
+const ViewAsset = (props) => {
   const { loading, data, error } = useFetch(
     URIs.assets + "/" + props.location.state.id
   );
@@ -20,7 +20,7 @@ const ViewAsset = props => {
           <h6>Department Name: {assetData.departmentName}</h6>
         </div>
 
-        {assetData.asset_type == "Software" ? (
+        {assetData.asset_type === "Software" ? (
           <div name = "software" style = {{ marginLeft: 300 + "px" }}>
             <h6>Name: {assetData.software_name}</h6>
             <h6>Version: {assetData.software_version}</h6>
@@ -39,6 +39,10 @@ const ViewAsset = props => {
         )}
       </div>
     );
-  } else return null;
+  } else
+  {
+
+   return null;
+  }
 };
 export default withRouter(ViewAsset);

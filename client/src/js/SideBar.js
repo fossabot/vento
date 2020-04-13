@@ -6,7 +6,7 @@ import {
 
 const SideBar = () => {
 
-  function myClick() {
+  const myClick = () => {
     console.log("test click");
     if (document.body.classList.contains('navbar-primary--minimize')) {
       document.body.classList.remove('navbar-primary--minimize');
@@ -15,7 +15,7 @@ const SideBar = () => {
       document.body.classList.add('navbar-primary--minimize');
       document.getElementById("btnNavPrimaryToggle").classList.add('navbar-primary-toggle--minimize');
     }
-    
+
   }
 
   return (

@@ -5,7 +5,7 @@ import URIs from "./utils/apis";
 
 var dataToEdit, type;
 //Submit only if value changed
-function handleChange(e) {
+const handleChange = (e) => {
   var name = document.getElementById(e);
   if (name.value !=  name.defaultValue) {
     document.getElementById("submit_button").disabled = false;
@@ -13,62 +13,66 @@ function handleChange(e) {
     document.getElementById("submit_button").disabled = true;
   }
 }
-function buildOptions(data, loading) {
+const buildOptions =(data, loading) => {
   var arr = [];
   if (!loading) {
     for (let i = 0; i < data.length; i++) {
-      //if(data[i].name  ==  "Default"){continue;}
       arr.push(<option key = {data[i].id} value = {data[i].id}>{data[i].display_name}</option>);
     }
     return arr;
   }
 }
-function buildUserOptions(data, loading) {
+const buildUserOptions =(data, loading) => {
   var arr = [];
   if (!loading) {
     for (let i = 0; i < data.length; i++) {
-      //if(data[i].name  ==  "Default"){continue;}
       arr.push(<option key = {data[i].id} value = {data[i].id}>{data[i].first_name}</option>);
     }
     return arr;
   }
 }
-function getDepartments() {
-  if (type  ==  "edit")
+const getDepartments =() => {
+  if (type  ===  "edit")
+  {
     return (
       <option key = {dataToEdit.department_id} value = {dataToEdit.department_id}>
         {dataToEdit.departmentName}
       </option>
     );
+  }
   const { loading, data, error } = useFetch(URIs.departments);
   return buildOptions(data["departments"], loading);
 }
 
-function getProducts(depID) {
-  if (type  ==  "edit")
+const getProducts =(depID) => {
+  if (type  ===  "edit")
+  {
     return (
       <option key = {dataToEdit.product_id} value = {dataToEdit.product_id}>
         {dataToEdit.productName}
       </option>
     );
+  }
   const { loading, data, error } = useFetch(URIs.products + "?department_id=" + depID);
   return buildOptions(data["products"], loading);
 }
-function getUsers(depID) {
-  if (type  ==  "edit")
+const getUsers =(depID) => {
+  if (type  ===  "edit")
+  {
     return (
     <option key = {dataToEdit.owner_id} value = {dataToEdit.owner_id}>
       {dataToEdit.ownerName}
     </option>);
+  }
   const { loading, data, error } = useFetch(URIs.users + "?dept_id=" + depID);
   return buildUserOptions(data["users"], loading);
 }
-const AssetForm = props  => {
+const AssetForm = (props)  => {
   const { register, handleSubmit, errors } = useForm(); // initialise the hook
   type = props.type;
   var enableDisable, asset_type, department_id;
 
-  if (props.type  ==  "edit") {
+  if (props.type  ===  "edit") {
     dataToEdit = props.dataToEdit;
     department_id = dataToEdit.department_id;
     enableDisable = true;
@@ -87,7 +91,7 @@ const AssetForm = props  => {
   const [depID, setDepID] = useState(department_id);
   return (
     <form onSubmit = {handleSubmit(props.onSubmit)}>
-      {asset_type  ==  "Software" ? (
+      {asset_type  ===  "Software" ? (
         <div className = "software">
           <input
             name = "asset_type"

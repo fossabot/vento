@@ -14,7 +14,7 @@ import { withRouter } from "react-router-dom";
 import AssetForm from "./AssetForm";
 
 //to Get CSV and Multi Create Event
-const handleFiles  =  files  => {
+const handleFiles  =  (files)  => {
   try {
     var reader  =  new FileReader();
     reader.onload  =  async function(e) {
@@ -29,12 +29,12 @@ const handleFiles  =  files  => {
 };
 // end
 
-const CustomToolbar  =  props  => {
+const CustomToolbar  =  (props)  => {
   const [modalShow, setModalShow]  =  useState(false);
   const [sModalShow, setSModalShow]  =  useState(false);
   const [hModalShow, setHModalShow]  =  useState(false);
 
-  const onSubmit  =  data  => {
+  const onSubmit  =  (data)  => {
     addAsset(data);
     if (data.assetType  ===  "Software") {
       setSModalShow(false);
@@ -44,7 +44,7 @@ const CustomToolbar  =  props  => {
     window.location.reload(false);
   };
 
-  async function addAsset(data) {
+  const addAsset = async (data) => {
     try {
       await create([data]);
     } catch (e) {
@@ -57,7 +57,7 @@ const CustomToolbar  =  props  => {
     }
   }
 
-  const MyVerticallyCenteredModal  =  props  => {
+  const MyVerticallyCenteredModal  =  (props)  => {
     return (
       <Modal
         {...props}
@@ -95,7 +95,7 @@ const CustomToolbar  =  props  => {
       </Modal>
     );
   };
-  const SModal  =  props  => {
+  const SModal  =  (props)  => {
     return (
       <Modal
         {...props}
@@ -118,7 +118,7 @@ const CustomToolbar  =  props  => {
       </Modal>
     );
   };
-  const HModal  =  props  => {
+  const HModal  =  (props)  => {
     return (
       <Modal
         {...props}

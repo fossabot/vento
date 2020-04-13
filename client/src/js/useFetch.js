@@ -7,7 +7,7 @@ export function useFetch(uri) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     var result;
-    async function fetchData() {
+    const fetchData = async () => {
       try {
         result = await axios(uri);
         if (result.status === 200) {
