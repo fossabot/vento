@@ -1,4 +1,6 @@
 # vento 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fatapas%2Fvento.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fatapas%2Fvento?ref=badge_shield)
+
 `Vento` is an Asset(Hardware and Software) Inventory Management system where all the assets can be managed with ease by the Lab Owners.
 
 # Code
@@ -63,3 +65,7 @@ After that, open [localhost:8080](http://localhost:8080) in your browser.
 Make sure that you start both servers simultaneously.
 
 To test the backend you can open [localhost:1337](http://localhost:1337)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fatapas%2Fvento.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fatapas%2Fvento?ref=badge_large)
