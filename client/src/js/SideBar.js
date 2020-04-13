@@ -6,6 +6,18 @@ import {
 
 const SideBar = () => {
 
+  function myClick() {
+    console.log("test click");
+    if (document.body.classList.contains('navbar-primary--minimize')) {
+      document.body.classList.remove('navbar-primary--minimize');
+      document.getElementById("btnNavPrimaryToggle").classList.remove('navbar-primary-toggle--minimize');
+    } else {
+      document.body.classList.add('navbar-primary--minimize');
+      document.getElementById("btnNavPrimaryToggle").classList.add('navbar-primary-toggle--minimize');
+    }
+    
+  }
+
   return (
     <nav className="navbar-primary">
       <header className="navbar-primary__header">
@@ -14,7 +26,7 @@ const SideBar = () => {
             Vento
           </span>
         </h1>
-        <button className="navbar-primary-toggle">
+        <button className="navbar-primary-toggle" id="btnNavPrimaryToggle" onClick={myClick}>
           <span></span>
           <span></span>
           <span></span>
