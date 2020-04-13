@@ -14,11 +14,7 @@ module.exports = {
       required: true,
       unique: true
     },
-    /*updatedat: { 
-       type: 'string', 
-       columnType: 'bigint',
-       defaultsTo: '4133894400000', 
-    },*/
+  
     email: {
       type: 'string',
       required: true,

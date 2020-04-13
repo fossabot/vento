@@ -77,7 +77,6 @@ module.exports = {
       unique: false
     },
     owner_id: {
-      //type: 'string',
       required: true,
       unique: false,
       model: 'user'
@@ -91,9 +90,5 @@ module.exports = {
       via : 'asset_id'
     }
   }
-  /*customToJSON: function() {
-    var obj = this;
-    obj['contract_end_date'] = parseInt(obj['contract_end_date']);
-    return obj;
-  }*/
+
 };

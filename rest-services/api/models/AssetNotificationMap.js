@@ -14,12 +14,10 @@ module.exports = {
     },
     asset_id: {
       required: true,
-      //unique: true,
       model: 'asset'
     },
     notification_id: {
       required: true,
-      //unique: true,
       model: 'notification'
     }
   }

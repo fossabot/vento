@@ -12,14 +12,12 @@ module.exports = {
           required: true,
           unique: true
         },
-          role_id: {
-          //type: 'string',
+          role_id: {         
           required: true,
             unique: true,
             model:'role'
           },
           permission_id: {
-            //type: 'string',
             required: true,
             unique: true,
             model:'permission'
