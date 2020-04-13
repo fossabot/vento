@@ -76,4 +76,5 @@ module.exports = {
     } else {
       sails.log(`Problem in deleting all the AssetNotificationMap records`);
     }
+  }
 };

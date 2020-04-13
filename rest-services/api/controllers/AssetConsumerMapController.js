@@ -76,4 +76,6 @@ module.exports = {
       sails.log(`Problem in deleting all the AssetConsumerMap records`);
 
     }
+  }
 };
+
